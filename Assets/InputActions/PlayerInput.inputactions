@@ -1,0 +1,40 @@
+{
+    "name": "PlayerInput",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "2323aedf-c280-4ec6-8596-4c33791ddab8",
+            "actions": [
+                {
+                    "name": "ClearLetters",
+                    "type": "Button",
+                    "id": "e8f03a85-00ff-46df-b84a-9eae0631d63e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d50ad769-5b07-4609-b511-4b2fd08e6318",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and Keyboard",
+                    "action": "ClearLetters",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mouse and Keyboard",
+            "bindingGroup": "Mouse and Keyboard",
+            "devices": []
+        }
+    ]
+}
