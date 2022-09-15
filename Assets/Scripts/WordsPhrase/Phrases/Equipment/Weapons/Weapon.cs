@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Weapon", menuName = "Equipment/Weapon", order = 51)]
 public class Weapon : Equipment
 {
-    [SerializeField] private float _damage;
+    [SerializeField] private int _damage;
     [SerializeField] private float _attackDelay;
 
     public float AttackDelay => _attackDelay;

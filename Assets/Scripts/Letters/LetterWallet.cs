@@ -47,9 +47,7 @@ public class LetterWallet : MonoBehaviour
         _playerInput.Disable();
 
         foreach (var letter in _letterViews)
-        {
             letter.Clicked -= OnClick;
-        }
 
         _typedWordChecker.WordApproved -= OnWordApprove;
         _wordsPhraseTranslator.WordCanceled -= ClearLetters;
@@ -89,7 +87,13 @@ public class LetterWallet : MonoBehaviour
 
     private void ClearLetters()
     {
+        foreach (var letter in _letterViews)
+        {
+            letter.DeSelect();
+        }
+
         _selectedLetters.Clear();
+
         Changed?.Invoke(CurrentWord);
     }
 }

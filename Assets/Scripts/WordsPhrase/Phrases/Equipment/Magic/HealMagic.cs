@@ -1,15 +1,16 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "new HealMagic", menuName = "Equipment/Magic/Heal", order = 51)]
 public class HealMagic : Magic
 {
-    [SerializeField] private float _healPercent;
+    [SerializeField] private int _healPercent;
 
     public override void Cast(Fighter caster)
     {
-        float maxPercent = 100;
+        int maxPercent = 100;
 
-        float generalHeal = caster.MaxHealth / maxPercent * _healPercent;
+        int generalHeal = Convert.ToInt32(Convert.ToSingle(caster.MaxHealth) / maxPercent * _healPercent);
 
         if (caster.CurrentHealth + generalHeal < caster.MaxHealth)
         {

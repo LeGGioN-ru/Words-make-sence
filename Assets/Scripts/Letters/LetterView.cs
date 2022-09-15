@@ -19,7 +19,7 @@ public class LetterView : MonoBehaviour
     private Button _button;
     private TMP_Text _text;
 
-    public bool IsSelected { get; private set; } = true;
+    public bool IsSelected { get; private set; }
 
     private void Awake()
     {
@@ -42,6 +42,12 @@ public class LetterView : MonoBehaviour
         _letter.Changed -= ChangeText;
     }
 
+    public void DeSelect()
+    {
+        IsSelected = false;
+        _image.color = _standartColor;
+    }
+
     private void ChangeText(char letter)
     {
         _text.text = letter.ToString();
@@ -51,7 +57,6 @@ public class LetterView : MonoBehaviour
     private void OnClick()
     {
         Clicked?.Invoke(_letter);
-        IsSelected = !IsSelected;
 
         if (IsSelected)
         {
@@ -64,11 +69,7 @@ public class LetterView : MonoBehaviour
 
     private void Select()
     {
+        IsSelected = true;
         _image.color = _selectableColor;
-    }
-
-    private void DeSelect()
-    {
-        _image.color = _standartColor;
     }
 }

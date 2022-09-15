@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(FighterFinder))]
@@ -7,20 +9,23 @@ public class Fighter : MonoBehaviour
     [SerializeField] private Weapon _startWeapon;
     [SerializeField] private Armor _startArmor;
     [SerializeField] private Magic _startMagic;
-    [SerializeField] private float _maxHealth;
-    [SerializeField] private float _maxMana;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private int _maxMana;
+
+    public event UnityAction<int, int> HealthChanged;
+    public event UnityAction<int, int> ManaChanged;
 
     public Weapon CurrentWeapon { get; protected set; }
     public Armor CurrentArmor { get; protected set; }
     public Magic CurrentMagic { get; protected set; }
 
-    public float MaxHealth => _maxHealth;
-    public float CurrentHealth => _currentHealth;
     public Fighter EnemyFighter => _enemyFighter;
+    public int MaxHealth => _maxHealth;
+    public int CurrentHealth => _currentHealth;
 
     private Fighter _enemyFighter;
-    private float _currentHealth;
-    private float _currentMana;
+    private int _currentHealth;
+    private int _currentMana;
     private Animator _animator;
 
     private void Start()
@@ -33,21 +38,20 @@ public class Fighter : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
-        int maxPercent = 100;
-        float finalDamage = damage;
-
-        if (CurrentArmor != null)
-            finalDamage = damage / maxPercent * (maxPercent - CurrentArmor.DefendPercent);
+        int finalDamage = CalculateDamage(damage);
 
         _animator.Play(FighterAnimationController.States.TakeDamage);
         _currentHealth -= finalDamage;
+
+        HealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
-    public void Heal(float healPoints)
+    public void Heal(int healPoints)
     {
         _currentHealth += healPoints;
+        HealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
     public void SetEnemy(Fighter fighter)
@@ -56,5 +60,16 @@ public class Fighter : MonoBehaviour
             return;
 
         _enemyFighter = fighter;
+    }
+
+    private int CalculateDamage(int damage)
+    {
+        int maxPercent = 100;
+        int finalDamage = damage;
+
+        if (CurrentArmor != null)
+            finalDamage = Convert.ToInt32(Convert.ToSingle(damage) / maxPercent * (maxPercent - CurrentArmor.DefendPercent));
+
+        return finalDamage;
     }
 }

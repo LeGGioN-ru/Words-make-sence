@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Fighter))]
 public class AttackState : State
@@ -7,10 +8,13 @@ public class AttackState : State
     private float _passedCastTime;
     private Fighter _currentFighter;
 
+    public event UnityAction AttackStart;
+
     private void OnEnable()
     {
         Animator.SetBool(FighterAnimationController.Params.IsRun, false);
         _currentFighter = GetComponent<Fighter>();
+        AttackStart?.Invoke();
     }
 
     private void Update()

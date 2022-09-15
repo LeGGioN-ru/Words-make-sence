@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new DamageMagic", menuName = "Equipment/Magic/Damage", order = 51)]
 public class DamageMagic : Magic
 {
-    [SerializeField] private float _damage;
+    [SerializeField] private int _damage;
 
     public override void Cast(Fighter caster)
     {
