@@ -7,10 +7,10 @@ public class Weapon : Equipment
     [SerializeField] private float _attackDelay;
 
     public float AttackDelay => _attackDelay;
+    public int Damage => _damage;
 
-    public virtual void Attack(Animator fighterAnimator, Fighter attacker)
+    public virtual void Attack(Fighter attacker, int finalDamage)
     {
-        attacker.EnemyFighter.TakeDamage(_damage);
-        fighterAnimator.Play(FighterAnimationController.States.Attack);
+        attacker.EnemyFighter.TakeDamage(finalDamage);
     }
 }

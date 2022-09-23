@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
@@ -10,12 +11,15 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int _evilIncreaseDelay;
     [SerializeField] private float _spawnDelay;
 
+    public event UnityAction<int> EvilIncreased;
+
     private int _evilLevel;
     private float _passedTime;
     private Enemy _currentEnemy;
 
     private void Start()
     {
+        EvilIncreased?.Invoke(_evilLevel);
         StartCoroutine(EvilIncrease());
     }
 
@@ -37,6 +41,7 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(_evilIncreaseDelay);
             _evilLevel++;
+            EvilIncreased?.Invoke(_evilLevel);
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class LetterWallet : MonoBehaviour
 {
-    [SerializeField] private WordChecker _typedWordChecker;
     [SerializeField] private WordsPhraseTranslator _wordsPhraseTranslator;
 
     public event UnityAction<string> Changed;
@@ -34,23 +33,23 @@ public class LetterWallet : MonoBehaviour
         _letterViews = letterViews;
 
         foreach (var letter in _letterViews)
-        {
             letter.Clicked += OnClick;
-        }
 
-        _typedWordChecker.WordApproved += OnWordApprove;
-        _wordsPhraseTranslator.WordCanceled += ClearLetters;
+
+        _wordsPhraseTranslator.Checked += OnWordApprove;
+        _wordsPhraseTranslator.WordCanceled += OnWordCanceled;
     }
 
     private void OnDisable()
     {
+        _playerInput.Player.ClearLetters.performed -= ctx => OnClearButtonPress();
         _playerInput.Disable();
 
         foreach (var letter in _letterViews)
             letter.Clicked -= OnClick;
 
-        _typedWordChecker.WordApproved -= OnWordApprove;
-        _wordsPhraseTranslator.WordCanceled -= ClearLetters;
+        _wordsPhraseTranslator.Checked -= OnWordApprove;
+        _wordsPhraseTranslator.WordCanceled -= OnWordCanceled;
     }
 
     private void Start()
@@ -58,7 +57,7 @@ public class LetterWallet : MonoBehaviour
         _selectedLetters = new List<Letter>();
         _playerInput = new PlayerInput();
         _playerInput.Enable();
-        _playerInput.Player.ClearLetters.performed += ctx => ClearLetters();
+        _playerInput.Player.ClearLetters.performed += ctx => OnClearButtonPress();
     }
 
     private void OnClick(Letter letter)
@@ -75,25 +74,26 @@ public class LetterWallet : MonoBehaviour
         Changed?.Invoke(CurrentWord);
     }
 
-    private void OnWordApprove(Word word)
+    private void OnWordApprove()
     {
-        foreach (var letter in _selectedLetters)
-        {
-            letter.ChangeLabel();
-        }
+        _selectedLetters.ForEach(let => let.ChangeLabel());
 
         _selectedLetters.Clear();
     }
 
-    private void ClearLetters()
+    private void OnClearButtonPress()
     {
+        OnWordCanceled();
+        Changed?.Invoke(string.Empty);
+    }
+
+    private void OnWordCanceled()
+    {
+        _selectedLetters.Clear();
+
         foreach (var letter in _letterViews)
         {
             letter.DeSelect();
         }
-
-        _selectedLetters.Clear();
-
-        Changed?.Invoke(CurrentWord);
     }
 }

@@ -21,7 +21,7 @@ public class WordChecker : MonoBehaviour
 
     private void OnChanged(string currentWord)
     {
-        var definedWord = _wordPool.FirstOrDefault(word => word.Label == currentWord);
+        var definedWord = _wordPool.FirstOrDefault(word => word.Label.ToUpper() == currentWord.ToUpper());
 
         if (definedWord != null)
         {

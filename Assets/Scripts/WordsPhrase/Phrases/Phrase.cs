@@ -5,13 +5,17 @@ public abstract class Phrase : ScriptableObject
     [SerializeField] private FirstOrderWord _firstOrderWord;
     [SerializeField] private SecondOrderWord _secondOrderWord;
     [SerializeField] private int _apptembsToActivate;
+    [SerializeField] private Sprite _icon;
+    [SerializeField] private string _description;
+
+    public Sprite Icon => _icon;
 
     public string Title => _firstOrderWord.Label + " " + _secondOrderWord.Label;
     public int ApptembsToActivate => _apptembsToActivate;
 
-    public bool Compare(FirstOrderWord firstCreativeWord, SecondOrderWord secondOrderWord)
+    public bool Compare(FirstOrderWord firstOrderWord, SecondOrderWord secondOrderWord)
     {
-        if (_firstOrderWord.Label == firstCreativeWord.Label && _secondOrderWord.Label == secondOrderWord.Label)
+        if (_firstOrderWord.Equals(firstOrderWord) && _secondOrderWord.Equals(secondOrderWord))
         {
             return true;
         }

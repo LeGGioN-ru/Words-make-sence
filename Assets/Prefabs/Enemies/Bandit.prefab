@@ -23,6 +23,9 @@ GameObject:
   - component: {fileID: 8010693733723724884}
   - component: {fileID: 8010693733723724885}
   - component: {fileID: 8010693733723724886}
+  - component: {fileID: -6310495705679257932}
+  - component: {fileID: 6772928640337964996}
+  - component: {fileID: 3810063951316002004}
   m_Layer: 6
   m_Name: Bandit
   m_TagString: Untagged
@@ -236,9 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6d149bbfbf8ad41b5e0860dcc16776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startWeapon: {fileID: 11400000, guid: 480a57ffb01596640a20f1714030e08c, type: 2}
-  _startArmor: {fileID: 0}
-  _startMagic: {fileID: 0}
+  _armorHolder: {fileID: 6772928640337964996}
   _maxHealth: 10
   _maxMana: 0
 --- !u!61 &8010693733723724891
@@ -320,3 +321,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e628beec555c9e24e8b68753e4964482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6310495705679257932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8010693733723724897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7cf70ed3a46bbb4291311d5f9df4cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _phraseActivator: {fileID: 0}
+  _attackState: {fileID: 8010693733723724894}
+  _weapon: {fileID: 11400000, guid: 480a57ffb01596640a20f1714030e08c, type: 2}
+--- !u!114 &6772928640337964996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8010693733723724897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca0b7d786cc1ea4187003d43341395f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _phraseActivator: {fileID: 0}
+  _armor: {fileID: 0}
+--- !u!114 &3810063951316002004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8010693733723724897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1cca6d81d8e8ae42a2e0c57d25a0012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _phraseActivator: {fileID: 0}
+  _magic: {fileID: 0}
+  _attackState: {fileID: 8010693733723724894}

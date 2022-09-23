@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ public class WordsPhraseTranslator : MonoBehaviour
     [SerializeField] private Phrase[] _endedWords;
 
     public event UnityAction<Phrase> Translated;
+    public event UnityAction Checked;
     public event UnityAction WordCanceled;
 
     private FirstOrderWord _firstOrderWord;
@@ -40,10 +42,11 @@ public class WordsPhraseTranslator : MonoBehaviour
         if (_firstOrderWord == null)
         {
             _firstOrderWord = firstOrderWord;
+            Checked?.Invoke();
             return;
         }
 
-        CancelWord();
+        CleanWords();
     }
 
     private void TryActivateWord(SecondOrderWord secondOrderWord)
@@ -52,15 +55,15 @@ public class WordsPhraseTranslator : MonoBehaviour
         {
             if (endWord.Compare(_firstOrderWord, secondOrderWord))
             {
+                Checked?.Invoke();
                 Translated?.Invoke(endWord);
-                return;
             }
         }
 
-        CancelWord();
+        CleanWords();
     }
 
-    private void CancelWord()
+    private void CleanWords()
     {
         WordCanceled?.Invoke();
         _firstOrderWord = null;

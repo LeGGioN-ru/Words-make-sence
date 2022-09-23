@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fe2018a677895479b531479a3b17a0, type: 3}
+  m_Name: Stick
+  m_EditorClassIdentifier: 
+  _firstOrderWord: {fileID: 11400000, guid: 86547443ad850ed4ba3b254aaec071aa, type: 2}
+  _secondOrderWord: {fileID: 11400000, guid: b9b33a6fcdc0c724693652c901bb489a, type: 2}
+  _apptembsToActivate: 0
+  _sprite: {fileID: 1247564272, guid: 02006e3d2342cfa4786518cae927ddbc, type: 3}

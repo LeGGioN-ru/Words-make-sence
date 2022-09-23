@@ -8,13 +8,13 @@ public class ParallaxesSwitcher : MonoBehaviour
 
     private void OnEnable()
     {
-        _attackState.AttackStart += Disable;
+        _attackState.AttackStarted += Disable;
         _fakeMoveState.MoveStart += Enable;
     }
 
     private void OnDisable()
     {
-        _attackState.AttackStart -= Disable;
+        _attackState.AttackStarted -= Disable;
         _fakeMoveState.MoveStart -= Enable;
     }
 

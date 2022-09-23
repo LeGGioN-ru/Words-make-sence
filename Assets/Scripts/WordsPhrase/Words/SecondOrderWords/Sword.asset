@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434a647ad7676cf4a9cbb353ddc826e3, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  _label: "\u041D"
+  _label: "\u041C\u0415\u0427"

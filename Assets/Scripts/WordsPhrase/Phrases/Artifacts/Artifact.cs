@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Artifact : Phrase
 {
-    public abstract void Equip();
+    public void Init()
+    {
 
-    public abstract void TakeOff();
+    }
+
+    protected abstract void OnDisable();
 }

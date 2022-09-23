@@ -35,6 +35,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClearLetterPanel"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf54505d-6885-4a3e-8156-8b8d3a576449"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -46,6 +55,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""ClearLetters"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40fcf90a-643f-4946-9487-7c2fc9857ff2"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""ClearLetterPanel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -63,6 +83,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_ClearLetters = m_Player.FindAction("ClearLetters", throwIfNotFound: true);
+        m_Player_ClearLetterPanel = m_Player.FindAction("ClearLetterPanel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -123,11 +144,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_ClearLetters;
+    private readonly InputAction m_Player_ClearLetterPanel;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @ClearLetters => m_Wrapper.m_Player_ClearLetters;
+        public InputAction @ClearLetterPanel => m_Wrapper.m_Player_ClearLetterPanel;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -140,6 +163,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ClearLetters.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetters;
                 @ClearLetters.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetters;
                 @ClearLetters.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetters;
+                @ClearLetterPanel.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetterPanel;
+                @ClearLetterPanel.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetterPanel;
+                @ClearLetterPanel.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetterPanel;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -147,6 +173,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ClearLetters.started += instance.OnClearLetters;
                 @ClearLetters.performed += instance.OnClearLetters;
                 @ClearLetters.canceled += instance.OnClearLetters;
+                @ClearLetterPanel.started += instance.OnClearLetterPanel;
+                @ClearLetterPanel.performed += instance.OnClearLetterPanel;
+                @ClearLetterPanel.canceled += instance.OnClearLetterPanel;
             }
         }
     }
@@ -163,5 +192,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnClearLetters(InputAction.CallbackContext context);
+        void OnClearLetterPanel(InputAction.CallbackContext context);
     }
 }
