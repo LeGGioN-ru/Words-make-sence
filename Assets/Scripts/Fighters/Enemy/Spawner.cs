@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float _spawnDelay;
 
     public event UnityAction<int> EvilIncreased;
+    public event UnityAction<Enemy> EnemySpawned;
 
     private int _evilLevel;
     private float _passedTime;
@@ -31,13 +32,14 @@ public class Spawner : MonoBehaviour
         if (_passedTime >= _spawnDelay)
         {
             _currentEnemy = Instantiate(_enemyPacks[_evilLevel].GetRandomEnemy(), _spawnPoint);
+            EnemySpawned?.Invoke(_currentEnemy);
             _passedTime = 0;
         }
     }
 
     private IEnumerator EvilIncrease()
     {
-        while (_evilLevel < _enemyPacks.Count)
+        while (_evilLevel < _enemyPacks.Count - 1)
         {
             yield return new WaitForSeconds(_evilIncreaseDelay);
             _evilLevel++;
@@ -53,6 +55,6 @@ public class EnemyPack
 
     public Enemy GetRandomEnemy()
     {
-        return _enemies[UnityEngine.Random.Range(0, _enemies.Count - 1)];
+        return _enemies[UnityEngine.Random.Range(0, _enemies.Count)];
     }
 }

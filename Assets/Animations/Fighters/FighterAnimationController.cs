@@ -11,6 +11,7 @@ public static class FighterAnimationController
         public static readonly int Run = Animator.StringToHash("Run");
         public static readonly int Attack = Animator.StringToHash("Attack");
         public static readonly int Die = Animator.StringToHash("Die");
+        public static readonly int Magic = Animator.StringToHash("Magic");
         public static readonly int TakeDamage = Animator.StringToHash("TakeDamage");
     }
 

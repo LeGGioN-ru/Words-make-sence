@@ -1,22 +1,25 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(ArmorHolder))]
+[RequireComponent(typeof(WeaponHolder))]
+[RequireComponent(typeof(MagicHolder))]
 public class Fighter : MonoBehaviour
 {
-    [SerializeField] private ArmorHolder _armorHolder;
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _maxMana;
+    [SerializeField] private float _regenerationDelay = 5;
 
     public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int, int> ManaChanged;
+    public event UnityAction Died;
 
-    public Fighter EnemyFighter => _enemyFighter;
     public int MaxHealth => _maxHealth;
     public int CurrentHealth => _currentHealth;
+    public Fighter Enemy => _enemy;
 
-    private Fighter _enemyFighter;
+    private Fighter _enemy;
     private int _currentHealth;
     private int _currentMana;
     private Animator _animator;
@@ -30,16 +33,13 @@ public class Fighter : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-
-        int finalDamage = damage;
-
-        if (_armorHolder.Armor != null)
-            finalDamage = _armorHolder.CalculateDamage(finalDamage);
-
+        _currentHealth -= damage;
         _animator.Play(FighterAnimationController.States.TakeDamage);
-        _currentHealth -= finalDamage;
 
         HealthChanged?.Invoke(_currentHealth, _maxHealth);
+
+        if (_currentHealth <= 0)
+            Died?.Invoke();
     }
 
     public void Heal(int healPoints)
@@ -53,6 +53,6 @@ public class Fighter : MonoBehaviour
         if (fighter == null)
             return;
 
-        _enemyFighter = fighter;
+        _enemy = fighter;
     }
 }

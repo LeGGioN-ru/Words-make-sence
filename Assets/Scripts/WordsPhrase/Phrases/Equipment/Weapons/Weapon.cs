@@ -11,6 +11,8 @@ public class Weapon : Equipment
 
     public virtual void Attack(Fighter attacker, int finalDamage)
     {
-        attacker.EnemyFighter.TakeDamage(finalDamage);
+        var enemyArmor = attacker.Enemy.GetComponent<ArmorHolder>();
+
+        enemyArmor.CalculateDamage(finalDamage);
     }
 }

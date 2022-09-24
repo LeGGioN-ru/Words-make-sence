@@ -20,10 +20,9 @@ public class ArmorHolder : EquipmentHolder
             _armor = armor;
             base.OnChanged(equipment);
         }
-
     }
 
-    public int CalculateDamage(int damage)
+    public void CalculateDamage(int damage)
     {
         int maxPercent = 100;
         int finalDamage = damage;
@@ -31,6 +30,6 @@ public class ArmorHolder : EquipmentHolder
         if (_armor != null)
             finalDamage = Convert.ToInt32(Convert.ToSingle(damage) / maxPercent * (maxPercent - _armor.DefendPercent));
 
-        return finalDamage;
+        Fighter.TakeDamage(finalDamage);
     }
 }

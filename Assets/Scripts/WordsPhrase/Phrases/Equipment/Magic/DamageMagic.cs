@@ -7,6 +7,6 @@ public class DamageMagic : Magic
 
     public override void Cast(Fighter caster)
     {
-        caster.EnemyFighter.TakeDamage(_damage);
+        caster.Enemy.TakeDamage(_damage);
     }
 }

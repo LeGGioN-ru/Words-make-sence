@@ -6,7 +6,7 @@ public class FighterLostTransition : Transition
 
     private void Update()
     {
-        if (CurrentFighter.EnemyFighter == null)
+        if (CurrentFighter.Enemy == null)
         {
             NeedTransit = true;
         }

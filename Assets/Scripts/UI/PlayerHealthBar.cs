@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthBar : Bar
+public class PlayerHealthBar : Bar
 {
+    [SerializeField] protected Player Player;
+
     protected override void OnEnable()
     {
         Player.HealthChanged += OnChange;

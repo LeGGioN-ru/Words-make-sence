@@ -8,6 +8,6 @@ public class Armor : Equipment
     [SerializeField] private int _manaRegeneration;
 
     public int DefendPercent => _defendPercent;
-    public float HealthRegeneration => _healthRegeneration;
-    public float ManaRegeneration => _manaRegeneration;
+    public int HealthRegeneration => _healthRegeneration;
+    public int ManaRegeneration => _manaRegeneration;
 }

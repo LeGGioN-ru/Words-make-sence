@@ -4,8 +4,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public abstract class Bar : MonoBehaviour
 {
-    [SerializeField] protected Player Player;
-
     private Slider _bar;
 
     private void Awake()

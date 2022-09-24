@@ -4,15 +4,15 @@ public class FighterFindTransition : Transition
 {
     [SerializeField] private FighterFinder _fighterFinder;
 
-    private Fighter _enemyFighter;
+    private Fighter _fighter;
 
     private void Update()
     {
-        _enemyFighter = _fighterFinder.Execute();
+        _fighter = _fighterFinder.Execute();
 
-        if (_enemyFighter != null)
+        if (_fighter != null)
         {
-            CurrentFighter.SetEnemy(_enemyFighter);
+            CurrentFighter.SetEnemy(_fighter);
             NeedTransit = true;
         }
     }
