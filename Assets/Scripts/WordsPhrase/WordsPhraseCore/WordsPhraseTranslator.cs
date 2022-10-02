@@ -6,6 +6,7 @@ public class WordsPhraseTranslator : MonoBehaviour
 {
     [SerializeField] private WordChecker _typedWordChecker;
     [SerializeField] private Phrase[] _endedWords;
+    [SerializeField] private ItemViewsGenerator _itemViewsGenerator;
 
     public event UnityAction<Phrase> Translated;
     public event UnityAction Checked;
@@ -15,6 +16,7 @@ public class WordsPhraseTranslator : MonoBehaviour
 
     private void OnEnable()
     {
+        _itemViewsGenerator.Init(_endedWords);
         _typedWordChecker.WordApproved += OnWordApproved;
     }
 

@@ -1,11 +1,23 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Artifact : Phrase
 {
-    public void Init()
-    {
+    [SerializeField] protected float Value;
 
+    public event UnityAction Used;
+
+    public float CurrentValue=>Value;
+
+    protected Player Player;
+
+    public virtual void Init(Player player)
+    {
+        Player = player;
     }
 
-    protected abstract void OnDisable();
+    public virtual void Use()
+    {
+        Used?.Invoke();
+    }
 }

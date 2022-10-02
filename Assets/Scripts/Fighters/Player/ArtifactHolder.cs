@@ -1,18 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 public class ArtifactHolder : MonoBehaviour
 {
-    [SerializeField] private WeaponHolder _weaponHolder;
-    [SerializeField] private ArmorHolder _armorHolder;
-    [SerializeField] private MagicHolder _magicHolder;
     [SerializeField] private Transform _container;
     [SerializeField] private ArtifactView _template;
     [SerializeField] private int _maxCount;
-    [SerializeField] private Queue<Artifact> _artifacts = new Queue<Artifact>();
     [SerializeField] private PhraseActivator _phraseActivator;
 
-    private Queue<ArtifactView> _views = new Queue<ArtifactView>();
+    private Player _player;
+
+    private List<ArtifactView> _views = new List<ArtifactView>();
+
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
 
     private void OnEnable()
     {
@@ -30,26 +34,23 @@ public class ArtifactHolder : MonoBehaviour
         {
             AddArtifact(artifact);
 
-            if (_artifacts.Count > _maxCount)
+            if (_views.Count > _maxCount)
                 RemoveArtifact();
         }
     }
 
-    private void AddArtifact(Artifact artifact)
-    {
-        _artifacts.Enqueue(artifact);
-        artifact.Init();
-
-        var artifactView = Instantiate(_template, _container);
-        artifactView.Init(artifact);
-
-        _views.Enqueue(artifactView);
-    }
-
     private void RemoveArtifact()
     {
-        _artifacts.Dequeue();
-        var artifactView = _views.Dequeue();
-        Destroy(artifactView);
+        int firstArtifactIndex = 0;
+        _views[firstArtifactIndex].Artifact.Use();
+        Destroy(_views[firstArtifactIndex].gameObject);
+    }
+
+    private void AddArtifact(Artifact artifact)
+    {
+        artifact.Init(_player);
+        var artifactView = Instantiate(_template, _container);
+        artifactView.Init(artifact);
+        _views.Add(artifactView);
     }
 }

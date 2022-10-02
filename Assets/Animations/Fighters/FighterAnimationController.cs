@@ -13,6 +13,7 @@ public static class FighterAnimationController
         public static readonly int Die = Animator.StringToHash("Die");
         public static readonly int Magic = Animator.StringToHash("Magic");
         public static readonly int TakeDamage = Animator.StringToHash("TakeDamage");
+        public static readonly int Heal = Animator.StringToHash("Heal");
     }
 
     public static class Params

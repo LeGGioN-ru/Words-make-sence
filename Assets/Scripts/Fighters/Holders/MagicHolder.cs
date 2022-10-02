@@ -8,7 +8,7 @@ public class MagicHolder : EquipmentHolder
     protected override void Start()
     {
         OnChanged(_magic);
-        base.Start();
+        //base.Start();
     }
 
     protected override void OnEnable()
@@ -29,7 +29,7 @@ public class MagicHolder : EquipmentHolder
         {
             _magic = magic;
             base.OnChanged(equipment);
-        }   
+        }
     }
 
     protected void OnAttackStarted()
@@ -37,9 +37,9 @@ public class MagicHolder : EquipmentHolder
         if (_magic == null)
             return;
 
-        if (PassedTime >= _magic.CastDelay)
+        if (PassedTime >= _magic.CastDelay && _magic.ManaCost <= Fighter.CurrentMana)
         {
-            _magic.Cast(Fighter);
+            _magic.TryCast(Fighter, Animator);
             PassedTime = 0;
         }
 

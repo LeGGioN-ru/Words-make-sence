@@ -7,16 +7,17 @@ using UnityEngine.Events;
 [RequireComponent(typeof(MagicHolder))]
 public class Fighter : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private int _maxMana;
-    [SerializeField] private float _regenerationDelay = 5;
+    [SerializeField] protected int MaxHealth;
+    [SerializeField] protected int MaxMana;
 
     public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int, int> ManaChanged;
     public event UnityAction Died;
 
-    public int MaxHealth => _maxHealth;
+    public int MaximumMana => MaxMana;
+    public int MaximumHealth => MaxHealth;
     public int CurrentHealth => _currentHealth;
+    public int CurrentMana => _currentMana;
     public Fighter Enemy => _enemy;
 
     private Fighter _enemy;
@@ -26,8 +27,8 @@ public class Fighter : MonoBehaviour
 
     private void Start()
     {
-        _currentHealth = _maxHealth;
-        _currentMana = _maxMana;
+        _currentHealth = MaxHealth;
+        _currentMana = MaxMana;
         _animator = GetComponent<Animator>();
     }
 
@@ -36,7 +37,7 @@ public class Fighter : MonoBehaviour
         _currentHealth -= damage;
         _animator.Play(FighterAnimationController.States.TakeDamage);
 
-        HealthChanged?.Invoke(_currentHealth, _maxHealth);
+        HealthChanged?.Invoke(_currentHealth, MaxHealth);
 
         if (_currentHealth <= 0)
             Died?.Invoke();
@@ -45,7 +46,19 @@ public class Fighter : MonoBehaviour
     public void Heal(int healPoints)
     {
         _currentHealth += healPoints;
-        HealthChanged?.Invoke(_currentHealth, _maxHealth);
+        HealthChanged?.Invoke(_currentHealth, MaxHealth);
+    }
+
+    public void HealMana(int mana)
+    {
+        _currentMana += mana;
+        ManaChanged?.Invoke(_currentMana, MaxMana);
+    }
+
+    public void ReduceMana(int mana)
+    {
+        _currentMana -= mana;
+        ManaChanged?.Invoke(_currentMana, MaxMana);
     }
 
     public void SetEnemy(Fighter fighter)
@@ -54,5 +67,11 @@ public class Fighter : MonoBehaviour
             return;
 
         _enemy = fighter;
+    }
+
+    public void SetStats(Armor armor)
+    {
+        MaxHealth = armor.Health;
+        MaxMana = armor.Mana;
     }
 }

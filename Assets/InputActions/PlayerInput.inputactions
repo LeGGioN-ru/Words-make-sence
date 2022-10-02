@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchMenu",
+                    "type": "Button",
+                    "id": "0c19a4e4-22f3-42d8-acd6-53d3756161ef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -44,6 +53,17 @@
                     "processors": "",
                     "groups": "Mouse and Keyboard",
                     "action": "ClearLetterPanel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2463655d-e7af-42a8-a98d-d0ef2de59840",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and Keyboard",
+                    "action": "SwitchMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

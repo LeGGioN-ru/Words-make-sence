@@ -44,6 +44,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c19a4e4-22f3-42d8-acd6-53d3756161ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""ClearLetterPanel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2463655d-e7af-42a8-a98d-d0ef2de59840"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""SwitchMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -84,6 +104,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_ClearLetters = m_Player.FindAction("ClearLetters", throwIfNotFound: true);
         m_Player_ClearLetterPanel = m_Player.FindAction("ClearLetterPanel", throwIfNotFound: true);
+        m_Player_SwitchMenu = m_Player.FindAction("SwitchMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -145,12 +166,14 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_ClearLetters;
     private readonly InputAction m_Player_ClearLetterPanel;
+    private readonly InputAction m_Player_SwitchMenu;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @ClearLetters => m_Wrapper.m_Player_ClearLetters;
         public InputAction @ClearLetterPanel => m_Wrapper.m_Player_ClearLetterPanel;
+        public InputAction @SwitchMenu => m_Wrapper.m_Player_SwitchMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -166,6 +189,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ClearLetterPanel.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetterPanel;
                 @ClearLetterPanel.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetterPanel;
                 @ClearLetterPanel.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetterPanel;
+                @SwitchMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchMenu;
+                @SwitchMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchMenu;
+                @SwitchMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -176,6 +202,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ClearLetterPanel.started += instance.OnClearLetterPanel;
                 @ClearLetterPanel.performed += instance.OnClearLetterPanel;
                 @ClearLetterPanel.canceled += instance.OnClearLetterPanel;
+                @SwitchMenu.started += instance.OnSwitchMenu;
+                @SwitchMenu.performed += instance.OnSwitchMenu;
+                @SwitchMenu.canceled += instance.OnSwitchMenu;
             }
         }
     }
@@ -193,5 +222,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnClearLetters(InputAction.CallbackContext context);
         void OnClearLetterPanel(InputAction.CallbackContext context);
+        void OnSwitchMenu(InputAction.CallbackContext context);
     }
 }

@@ -35,7 +35,6 @@ public class LetterWallet : MonoBehaviour
         foreach (var letter in _letterViews)
             letter.Clicked += OnClick;
 
-
         _wordsPhraseTranslator.Checked += OnWordApprove;
         _wordsPhraseTranslator.WordCanceled += OnWordCanceled;
     }

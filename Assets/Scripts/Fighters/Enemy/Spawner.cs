@@ -32,6 +32,8 @@ public class Spawner : MonoBehaviour
         if (_passedTime >= _spawnDelay)
         {
             _currentEnemy = Instantiate(_enemyPacks[_evilLevel].GetRandomEnemy(), _spawnPoint);
+
+
             EnemySpawned?.Invoke(_currentEnemy);
             _passedTime = 0;
         }

@@ -22,7 +22,7 @@ public class EnemyHealthBar : Bar
     {
         _enemy = enemy;
         _text.text = enemy.Name;
-        OnChange(enemy.MaxHealth, enemy.CurrentHealth);
+        OnChange(enemy.MaximumHealth, enemy.CurrentHealth);
         _enemy.Died += OnDied;
         _enemy.HealthChanged += OnChange;
     }

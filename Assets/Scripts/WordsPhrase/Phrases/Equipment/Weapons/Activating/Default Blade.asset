@@ -17,5 +17,5 @@ MonoBehaviour:
   _apptembsToActivate: 1
   _icon: {fileID: 21300000, guid: a755462cbae8c084d9e641231bebb98d, type: 3}
   _description: 
-  _damage: 5
+  _damage: 15
   _attackDelay: 3

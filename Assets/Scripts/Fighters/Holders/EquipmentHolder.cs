@@ -15,11 +15,13 @@ public abstract class EquipmentHolder : MonoBehaviour
     protected Animator Animator;
     protected Fighter Fighter;
 
-    protected virtual void Start()
+    private void Awake()
     {
         Animator = GetComponent<Animator>();
         Fighter = GetComponent<Fighter>();
     }
+
+    abstract protected void Start();
 
     protected virtual void OnEnable()
     {

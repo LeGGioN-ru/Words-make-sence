@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class WeaponHolder : EquipmentHolder
@@ -5,10 +6,11 @@ public class WeaponHolder : EquipmentHolder
     [SerializeField] private AttackState _attackState;
     [SerializeField] private Weapon _weapon;
 
+    private float _attackMultiplier = 1;
+
     protected override void Start()
     {
         OnChanged(_weapon);
-        base.Start();
     }
 
     protected override void OnEnable()
@@ -21,6 +23,16 @@ public class WeaponHolder : EquipmentHolder
     {
         _attackState.AttackStarted -= OnAttackStarted;
         base.OnDisable();
+    }
+
+    public void IncreaseAttackMultiplier(float buff)
+    {
+        _attackMultiplier += buff;
+    }
+
+    public void ReduceAttackMultuplier(float buff)
+    {
+        _attackMultiplier -= buff;
     }
 
     protected override void OnChanged(Equipment equipment)
@@ -49,6 +61,6 @@ public class WeaponHolder : EquipmentHolder
 
     private int CalculateFinalDamage()
     {
-        return _weapon.Damage;
+        return Convert.ToInt32(_weapon.Damage * _attackMultiplier);
     }
 }
