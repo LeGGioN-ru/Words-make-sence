@@ -5,6 +5,7 @@ public class DamageMagic : Magic
 {
     public override void TryCast(Fighter caster, Animator animator)
     {
+        caster.ReduceMana(ManaCost);
         caster.Enemy.TakeDamage(Value);
         animator.Play(FighterAnimationController.States.Magic);
     }

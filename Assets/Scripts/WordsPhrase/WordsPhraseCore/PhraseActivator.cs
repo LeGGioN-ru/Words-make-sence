@@ -27,9 +27,7 @@ public class PhraseActivator : MonoBehaviour
     public void OnTranslated(Phrase phrase)
     {
         if (_phrasesApptembs.ContainsKey(phrase) == false)
-        {
             AddPhrase(phrase);
-        }
 
         _phrasesApptembs[phrase]++;
         ApptembsIncreased?.Invoke(phrase, _phrasesApptembs[phrase]);

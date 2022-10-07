@@ -8,9 +8,9 @@ public class HealMagic : Magic
     {
         int maxPercent = 100;
 
-        int generalHeal = Convert.ToInt32(Convert.ToSingle(caster.MaximumHealth) / maxPercent * Value);
+        int generalHeal = Convert.ToInt32(Convert.ToSingle(caster.MaxHealth) / maxPercent * Value);
 
-        if (caster.CurrentHealth + generalHeal < caster.MaximumHealth)
+        if (caster.CurrentHealth + generalHeal < caster.MaxHealth)
         {
             caster.ReduceMana(ManaCost);
             caster.Heal(generalHeal);

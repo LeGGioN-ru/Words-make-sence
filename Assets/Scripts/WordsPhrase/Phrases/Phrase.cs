@@ -6,10 +6,11 @@ public abstract class Phrase : ScriptableObject
     [SerializeField] private SecondOrderWord _secondOrderWord;
     [SerializeField] private int _apptembsToActivate;
     [SerializeField] private Sprite _icon;
-    [SerializeField] private string _description;
 
+
+    public FirstOrderWord FirstOrderWord => _firstOrderWord;
+    public SecondOrderWord SecondOrderWord => _secondOrderWord;
     public Sprite Icon => _icon;
-
     public string Title => _firstOrderWord.Label + " " + _secondOrderWord.Label;
     public int ApptembsToActivate => _apptembsToActivate;
 

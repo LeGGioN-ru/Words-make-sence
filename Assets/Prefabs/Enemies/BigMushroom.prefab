@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2041573276079852369}
   - component: {fileID: 2041573276079852381}
   - component: {fileID: 2041573276079852398}
-  - component: {fileID: 2041573276079852399}
+  - component: {fileID: 9039018543417889449}
   - component: {fileID: 2041573276079852374}
   - component: {fileID: 2041573276079852377}
   - component: {fileID: 2041573276079852376}
@@ -41,7 +41,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041573276079852396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20.19, z: 0}
+  m_LocalPosition: {x: 0, y: 19.57, z: 0}
   m_LocalScale: {x: 15.09, y: 73.155464, z: 15.09}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -128,7 +128,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 2041573276079852368}
   - {fileID: 2041573276079852381}
-  _moveSpeed: 0.6
+  _moveSpeed: 0.3
   _direction: {x: -1, y: 0}
 --- !u!114 &2041573276079852371
 MonoBehaviour:
@@ -227,7 +227,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
---- !u!114 &2041573276079852399
+--- !u!114 &9039018543417889449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,13 +236,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2041573276079852396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a6d149bbfbf8ad41b5e0860dcc16776, type: 3}
+  m_Script: {fileID: 11500000, guid: 97a4a0bcae6be3f4180f3891922ef64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 25
-  _maxMana: 0
-  _regenerationDelay: 5
-  _name: "\u0412\u043E\u0438\u043D\u0441\u0442\u0432\u0443\u044E\u0449\u0430\u044F"
+  _maxHealth: 1000
+  _maxMana: 1000
+  _name: "\u041E\u0433\u0440\u043E\u043C\u043D\u044B\u0439 \u0433\u0440\u0438\u0431"
 --- !u!61 &2041573276079852374
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -336,7 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _phraseActivator: {fileID: 0}
   _attackState: {fileID: 2041573276079852371}
-  _weapon: {fileID: 11400000, guid: 480a57ffb01596640a20f1714030e08c, type: 2}
+  _weapon: {fileID: 11400000, guid: b8591c60af61e5a408c943bbd52b3669, type: 2}
 --- !u!114 &3350912486458964169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _phraseActivator: {fileID: 0}
-  _armor: {fileID: 11400000, guid: d50d6f844701fdf4f90d97bf61614294, type: 2}
+  _armor: {fileID: 0}
 --- !u!114 &5160706722508141529
 MonoBehaviour:
   m_ObjectHideFlags: 0

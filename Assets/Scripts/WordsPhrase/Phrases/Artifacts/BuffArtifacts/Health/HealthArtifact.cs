@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new Amulet", menuName = "Artifacts/HealAmulet", order = 51)]
+[CreateAssetMenu(fileName = "new Amulet", menuName = "Artifacts/Buff/HealAmulet", order = 51)]
 public class HealthArtifact : Artifact
 {
     public override void Init(Player player)

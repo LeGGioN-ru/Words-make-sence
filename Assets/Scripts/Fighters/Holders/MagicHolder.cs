@@ -8,7 +8,6 @@ public class MagicHolder : EquipmentHolder
     protected override void Start()
     {
         OnChanged(_magic);
-        //base.Start();
     }
 
     protected override void OnEnable()

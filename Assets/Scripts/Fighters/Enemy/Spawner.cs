@@ -8,8 +8,8 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<EnemyPack> _enemyPacks;
     [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private int _evilIncreaseDelay;
     [SerializeField] private float _spawnDelay;
+    [SerializeField] private int _evilIncreaseDelay;
 
     public event UnityAction<int> EvilIncreased;
     public event UnityAction<Enemy> EnemySpawned;
@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         EvilIncreased?.Invoke(_evilLevel);
-        StartCoroutine(EvilIncrease());
+        StartCoroutine(EvilIncreasing());
     }
 
     private void Update()
@@ -31,22 +31,37 @@ public class Spawner : MonoBehaviour
 
         if (_passedTime >= _spawnDelay)
         {
-            _currentEnemy = Instantiate(_enemyPacks[_evilLevel].GetRandomEnemy(), _spawnPoint);
-
-
-            EnemySpawned?.Invoke(_currentEnemy);
+            Execute();
             _passedTime = 0;
         }
     }
 
-    private IEnumerator EvilIncrease()
+    private IEnumerator EvilIncreasing()
     {
         while (_evilLevel < _enemyPacks.Count - 1)
         {
             yield return new WaitForSeconds(_evilIncreaseDelay);
-            _evilLevel++;
-            EvilIncreased?.Invoke(_evilLevel);
+            IncreaseEvil();
         }
+    }
+
+    private void IncreaseEvil()
+    {
+        _evilLevel++;
+        EvilIncreased?.Invoke(_evilLevel);
+    }
+
+    private void Execute()
+    {
+        _currentEnemy = Instantiate(_enemyPacks[_evilLevel].GetRandomEnemy(), _spawnPoint);
+
+        if (_currentEnemy == null)
+            return;
+
+        if (_currentEnemy is Boss)
+            IncreaseEvil();
+
+        EnemySpawned?.Invoke(_currentEnemy);
     }
 }
 

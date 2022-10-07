@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba5efb7aae36c643b019a260968d3d8, type: 3}
+  m_Name: StrongAxe
+  m_EditorClassIdentifier: 
+  _firstOrderWord: {fileID: 11400000, guid: 8a8dca117cb27de45b4088cf62d0a15e, type: 2}
+  _secondOrderWord: {fileID: 11400000, guid: 9fb73c69c87c1f14eafa1cbcaf8e3d04, type: 2}
+  _apptembsToActivate: 4
+  _icon: {fileID: 21300000, guid: b79e8465b3928994bacd606869d60c32, type: 3}
+  _damage: 100
+  _attackDelay: 4

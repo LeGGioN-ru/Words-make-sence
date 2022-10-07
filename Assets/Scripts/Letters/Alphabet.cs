@@ -3,7 +3,7 @@ using System;
 [Serializable]
 public static class Alphabet
 {
-    private static char[] _alphabet = "юабцдефгхийклмнопярстужвьызшэщчъ".ToCharArray();
+    private static readonly char[] _alphabet = "юабцдефгхийклмнопярстужвьышэщчъ".ToCharArray();
 
     public static char GetRandomLetter()
     {

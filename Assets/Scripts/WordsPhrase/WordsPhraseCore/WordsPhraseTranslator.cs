@@ -4,8 +4,8 @@ using UnityEngine.Events;
 
 public class WordsPhraseTranslator : MonoBehaviour
 {
-    [SerializeField] private WordChecker _typedWordChecker;
-    [SerializeField] private Phrase[] _endedWords;
+    [SerializeField] private WordChecker _wordChecker;
+    [SerializeField] private Phrase[] _phrases;
     [SerializeField] private ItemViewsGenerator _itemViewsGenerator;
 
     public event UnityAction<Phrase> Translated;
@@ -16,13 +16,14 @@ public class WordsPhraseTranslator : MonoBehaviour
 
     private void OnEnable()
     {
-        _itemViewsGenerator.Init(_endedWords);
-        _typedWordChecker.WordApproved += OnWordApproved;
+        _itemViewsGenerator.Init(_phrases);
+        _wordChecker.Init(_phrases);
+        _wordChecker.WordApproved += OnWordApproved;
     }
 
     private void OnDisable()
     {
-        _typedWordChecker.WordApproved -= OnWordApproved;
+        _wordChecker.WordApproved -= OnWordApproved;
     }
 
     private void OnWordApproved(Word word)
@@ -53,7 +54,7 @@ public class WordsPhraseTranslator : MonoBehaviour
 
     private void TryActivateWord(SecondOrderWord secondOrderWord)
     {
-        foreach (var endWord in _endedWords)
+        foreach (var endWord in _phrases)
         {
             if (endWord.Compare(_firstOrderWord, secondOrderWord))
             {

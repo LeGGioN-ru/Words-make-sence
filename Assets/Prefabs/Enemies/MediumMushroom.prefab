@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6d149bbfbf8ad41b5e0860dcc16776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 75
-  MaxMana: 200
+  _maxHealth: 125
+  _maxMana: 0
   _name: "\u0421\u0440\u0435\u0434\u043D\u0438\u0439 \u0433\u0440\u0438\u0431"
 --- !u!61 &1022865441163824138
 BoxCollider2D:
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _phraseActivator: {fileID: 0}
-  _magic: {fileID: 11400000, guid: 6c33acf398b1fda4fbcd6d9c6c2cf0d5, type: 2}
+  _magic: {fileID: 11400000, guid: 77a501d3da083b0449a01b35ef0188b2, type: 2}
   _attackState: {fileID: 1022865441163824143}
 --- !u!114 &8574849548808869842
 MonoBehaviour:

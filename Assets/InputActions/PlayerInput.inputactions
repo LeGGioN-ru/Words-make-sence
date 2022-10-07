@@ -24,9 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwitchMenu",
+                    "name": "SwitchWordPedia",
                     "type": "Button",
                     "id": "0c19a4e4-22f3-42d8-acd6-53d3756161ef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchMenu",
+                    "type": "Button",
+                    "id": "64834894-1a0c-40f5-bc9f-be9ccb46ed24",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -60,6 +69,17 @@
                     "name": "",
                     "id": "2463655d-e7af-42a8-a98d-d0ef2de59840",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and Keyboard",
+                    "action": "SwitchWordPedia",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa2a911e-2555-4939-895f-36630a0be474",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse and Keyboard",

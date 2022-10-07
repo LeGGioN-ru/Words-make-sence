@@ -46,9 +46,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SwitchMenu"",
+                    ""name"": ""SwitchWordPedia"",
                     ""type"": ""Button"",
                     ""id"": ""0c19a4e4-22f3-42d8-acd6-53d3756161ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""64834894-1a0c-40f5-bc9f-be9ccb46ed24"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -85,6 +94,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""SwitchWordPedia"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa2a911e-2555-4939-895f-36630a0be474"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""SwitchMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -104,6 +124,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_ClearLetters = m_Player.FindAction("ClearLetters", throwIfNotFound: true);
         m_Player_ClearLetterPanel = m_Player.FindAction("ClearLetterPanel", throwIfNotFound: true);
+        m_Player_SwitchWordPedia = m_Player.FindAction("SwitchWordPedia", throwIfNotFound: true);
         m_Player_SwitchMenu = m_Player.FindAction("SwitchMenu", throwIfNotFound: true);
     }
 
@@ -166,6 +187,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_ClearLetters;
     private readonly InputAction m_Player_ClearLetterPanel;
+    private readonly InputAction m_Player_SwitchWordPedia;
     private readonly InputAction m_Player_SwitchMenu;
     public struct PlayerActions
     {
@@ -173,6 +195,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @ClearLetters => m_Wrapper.m_Player_ClearLetters;
         public InputAction @ClearLetterPanel => m_Wrapper.m_Player_ClearLetterPanel;
+        public InputAction @SwitchWordPedia => m_Wrapper.m_Player_SwitchWordPedia;
         public InputAction @SwitchMenu => m_Wrapper.m_Player_SwitchMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -189,6 +212,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ClearLetterPanel.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetterPanel;
                 @ClearLetterPanel.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetterPanel;
                 @ClearLetterPanel.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClearLetterPanel;
+                @SwitchWordPedia.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWordPedia;
+                @SwitchWordPedia.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWordPedia;
+                @SwitchWordPedia.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWordPedia;
                 @SwitchMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchMenu;
                 @SwitchMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchMenu;
                 @SwitchMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchMenu;
@@ -202,6 +228,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ClearLetterPanel.started += instance.OnClearLetterPanel;
                 @ClearLetterPanel.performed += instance.OnClearLetterPanel;
                 @ClearLetterPanel.canceled += instance.OnClearLetterPanel;
+                @SwitchWordPedia.started += instance.OnSwitchWordPedia;
+                @SwitchWordPedia.performed += instance.OnSwitchWordPedia;
+                @SwitchWordPedia.canceled += instance.OnSwitchWordPedia;
                 @SwitchMenu.started += instance.OnSwitchMenu;
                 @SwitchMenu.performed += instance.OnSwitchMenu;
                 @SwitchMenu.canceled += instance.OnSwitchMenu;
@@ -222,6 +251,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnClearLetters(InputAction.CallbackContext context);
         void OnClearLetterPanel(InputAction.CallbackContext context);
+        void OnSwitchWordPedia(InputAction.CallbackContext context);
         void OnSwitchMenu(InputAction.CallbackContext context);
     }
 }

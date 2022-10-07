@@ -7,15 +7,39 @@ using UnityEngine.Events;
 [RequireComponent(typeof(MagicHolder))]
 public class Fighter : MonoBehaviour
 {
-    [SerializeField] protected int MaxHealth;
-    [SerializeField] protected int MaxMana;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private int _maxMana;
 
     public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int, int> ManaChanged;
     public event UnityAction Died;
 
-    public int MaximumMana => MaxMana;
-    public int MaximumHealth => MaxHealth;
+    public int MaxMana
+    {
+        get
+        {
+            return _maxMana;
+        }
+        protected set
+        {
+            _maxMana = value;
+            ManaChanged?.Invoke(_currentMana, _maxMana);
+        }
+    }
+
+    public int MaxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }
+        protected set
+        {
+            _maxHealth = value;
+            HealthChanged?.Invoke(_currentHealth, _maxHealth);
+        }
+    }
+
     public int CurrentHealth => _currentHealth;
     public int CurrentMana => _currentMana;
     public Fighter Enemy => _enemy;
@@ -27,8 +51,8 @@ public class Fighter : MonoBehaviour
 
     private void Start()
     {
-        _currentHealth = MaxHealth;
-        _currentMana = MaxMana;
+        _currentHealth = _maxHealth;
+        _currentMana = _maxMana;
         _animator = GetComponent<Animator>();
     }
 
@@ -37,7 +61,7 @@ public class Fighter : MonoBehaviour
         _currentHealth -= damage;
         _animator.Play(FighterAnimationController.States.TakeDamage);
 
-        HealthChanged?.Invoke(_currentHealth, MaxHealth);
+        HealthChanged?.Invoke(_currentHealth, _maxHealth);
 
         if (_currentHealth <= 0)
             Died?.Invoke();
@@ -46,19 +70,19 @@ public class Fighter : MonoBehaviour
     public void Heal(int healPoints)
     {
         _currentHealth += healPoints;
-        HealthChanged?.Invoke(_currentHealth, MaxHealth);
+        HealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
-    public void HealMana(int mana)
+    public void RecoverMana(int mana)
     {
         _currentMana += mana;
-        ManaChanged?.Invoke(_currentMana, MaxMana);
+        ManaChanged?.Invoke(_currentMana, _maxMana);
     }
 
     public void ReduceMana(int mana)
     {
         _currentMana -= mana;
-        ManaChanged?.Invoke(_currentMana, MaxMana);
+        ManaChanged?.Invoke(_currentMana, _maxMana);
     }
 
     public void SetEnemy(Fighter fighter)
@@ -67,11 +91,5 @@ public class Fighter : MonoBehaviour
             return;
 
         _enemy = fighter;
-    }
-
-    public void SetStats(Armor armor)
-    {
-        MaxHealth = armor.Health;
-        MaxMana = armor.Mana;
     }
 }

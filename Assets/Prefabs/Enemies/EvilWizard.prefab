@@ -239,9 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6d149bbfbf8ad41b5e0860dcc16776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
-  _maxMana: 0
-  _regenerationDelay: 5
+  MaxHealth: 0
+  MaxMana: 0
   _name: "\u0411\u0430\u043D\u0434\u0438\u0442"
 --- !u!61 &6273542938462639982
 BoxCollider2D:
@@ -336,7 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _phraseActivator: {fileID: 0}
   _attackState: {fileID: 6273542938462639979}
-  _weapon: {fileID: 11400000, guid: 480a57ffb01596640a20f1714030e08c, type: 2}
+  _weapon: {fileID: 11400000, guid: 3736cc497fd23d94e96b5f6b3844dbd2, type: 2}
 --- !u!114 &7333530509250454769
 MonoBehaviour:
   m_ObjectHideFlags: 0

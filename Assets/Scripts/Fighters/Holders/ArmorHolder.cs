@@ -7,7 +7,7 @@ public class ArmorHolder : EquipmentHolder
 
     public Armor Armor => _armor;
 
-    private int _regenerationDelay = 5;
+    private readonly int _regenerationDelay = 5;
     private float _passedTime;
 
     protected override void Start()
@@ -17,13 +17,9 @@ public class ArmorHolder : EquipmentHolder
 
     private void Update()
     {
-        if (_armor == null)
-            return;
-
         if (_passedTime >= _regenerationDelay)
         {
-            Fighter.Heal(_armor.HealthRegeneration);
-            Fighter.HealMana(_armor.ManaRegeneration);
+            Regenerate();
             _passedTime = 0;
         }
 
@@ -32,10 +28,10 @@ public class ArmorHolder : EquipmentHolder
 
     protected override void OnChanged(Equipment equipment)
     {
-        if (equipment is Armor armor)
+        if (equipment is Armor armor && Fighter is Player player)
         {
             _armor = armor;
-            Fighter.SetStats(armor);
+            player.SetStats(armor);
             base.OnChanged(equipment);
         }
     }
@@ -49,5 +45,25 @@ public class ArmorHolder : EquipmentHolder
             finalDamage = Convert.ToInt32(Convert.ToSingle(damage) / maxPercent * (maxPercent - _armor.DefendPercent));
 
         Fighter.TakeDamage(finalDamage);
+    }
+
+    private void Regenerate()
+    {
+        if (_armor == null)
+        {
+            Fighter.Heal(0);
+            Fighter.RecoverMana(0);
+            return;
+        }
+
+        int healthAfterRegeneration = _armor.HealthRegeneration + Fighter.CurrentHealth;
+
+        if (healthAfterRegeneration <= Fighter.MaxHealth)
+            Fighter.Heal(_armor.HealthRegeneration);
+
+        int manaAfterRegeneration = _armor.ManaRegeneration + Fighter.CurrentMana;
+
+        if (manaAfterRegeneration <= Fighter.MaxMana)
+            Fighter.RecoverMana(_armor.ManaRegeneration);
     }
 }

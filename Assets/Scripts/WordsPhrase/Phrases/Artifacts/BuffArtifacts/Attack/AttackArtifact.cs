@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new Amulet", menuName = "Artifacts/AttackAmulet", order = 51)]
+[CreateAssetMenu(fileName = "new Amulet", menuName = "Artifacts/Buff/AttackAmulet", order = 51)]
 public class AttackArtifact : Artifact
 {
     private WeaponHolder _weaponHolder;

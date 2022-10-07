@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a17d5440284d14190436d9195b364c, type: 3}
+  m_Name: SharpedAmulet
+  m_EditorClassIdentifier: 
+  _firstOrderWord: {fileID: 11400000, guid: 6d6ec51a393948f4ba7f8e4b819a13e3, type: 2}
+  _secondOrderWord: {fileID: 11400000, guid: 342212d06c312694a8c11dafbb335270, type: 2}
+  _apptembsToActivate: 2
+  _icon: {fileID: 8464777813188679866, guid: 6549b0afeb0e6d84d8c4f70c48b74d2c, type: 3}
+  Value: 0.5

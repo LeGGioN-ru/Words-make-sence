@@ -239,8 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6d149bbfbf8ad41b5e0860dcc16776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
-  MaxMana: 0
+  _maxHealth: 175
+  _maxMana: 0
   _name: "\u041F\u0443\u0441\u0442\u044B\u043D\u043D\u044B\u0439 \u0431\u0430\u043D\u0434\u0438\u0442"
 --- !u!61 &4538897754210956979
 BoxCollider2D:

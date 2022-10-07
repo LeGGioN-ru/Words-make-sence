@@ -35,11 +35,15 @@ public class ItemViewsGenerator : MonoBehaviour
                     break;
 
                 case DamageMagic damageMagic:
-                    Instantiate(_magicHealView, _magicContrainer).Init(damageMagic);
+                    Instantiate(_magicDamageView, _magicContrainer).Init(damageMagic);
                     break;
 
                 case HealthPotion healthPotion:
                     Instantiate(_artifactHealPotionView, _artifactContrainer).Init(healthPotion);
+                    break;
+
+                case ManaPotion manaPotion:
+                    Instantiate(_artifactManaPotionView, _artifactContrainer).Init(manaPotion);
                     break;
 
                 case AttackArtifact attackArtifact:
@@ -48,6 +52,10 @@ public class ItemViewsGenerator : MonoBehaviour
 
                 case HealthArtifact healthArtifact:
                     Instantiate(_artifactHealBuffView, _artifactContrainer).Init(healthArtifact);
+                    break;
+
+                case ManaArtifact mananaArtifact:
+                    Instantiate(_artifactManaBuffView, _artifactContrainer).Init(mananaArtifact);
                     break;
             }
         }
