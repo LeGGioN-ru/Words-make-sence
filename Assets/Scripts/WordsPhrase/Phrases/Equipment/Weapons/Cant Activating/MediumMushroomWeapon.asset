@@ -18,3 +18,7 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _damage: 6
   _attackDelay: 3
+  _soundSettings:
+    _sound: {fileID: 8300000, guid: 7625d2767aaaf644ea2852c37a6b146e, type: 3}
+    _minPitch: 1
+    _maxPitch: 1.3

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: WeakHeal
   m_EditorClassIdentifier: 
   _firstOrderWord: {fileID: 11400000, guid: 5e61036fe3eeaea46b187c4bb5475036, type: 2}
-  _secondOrderWord: {fileID: 11400000, guid: 60ba02f3e58b11742b4aa96a072cfb8b, type: 2}
+  _secondOrderWord: {fileID: 11400000, guid: e60cacc53276d26428b5959fc0f6dde2, type: 2}
   _apptembsToActivate: 2
   _icon: {fileID: 21300000, guid: 739d02a2362192e4186db53bbc959cdd, type: 3}
-  _manaCost: 10
-  _castDelay: 5
+  _manaCost: 30
+  _castDelay: 20
   Value: 10
+  _particles: {fileID: 4773718030322521984, guid: 4c4b57afd8a5779439e333f72540805e, type: 3}

@@ -42,7 +42,6 @@ public class PhraseActivator : MonoBehaviour
     private void AddPhrase(Phrase phrase)
     {
         _phrasesApptembs.Add(phrase, 0);
-        var apptembsView = Instantiate(_template, _container);
-        apptembsView.Init(this, phrase);
+        Instantiate(_template, _container).Init(this, phrase);
     }
 }

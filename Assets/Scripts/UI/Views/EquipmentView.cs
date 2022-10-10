@@ -9,12 +9,12 @@ public class EquipmentView : MonoBehaviour
 
     private void OnEnable()
     {
-        _holder.Equip += OnEquipmentChanged;
+        _holder.Changed += OnChanged;
     }
 
     private void OnDisable()
     {
-        _holder.Equip -= OnEquipmentChanged;
+        _holder.Changed -= OnChanged;
     }
 
     private void Awake()
@@ -22,7 +22,7 @@ public class EquipmentView : MonoBehaviour
         _image = GetComponent<Image>();
     }
 
-    public void OnEquipmentChanged(Equipment equipment)
+    public void OnChanged(Equipment equipment)
     {
         _image.sprite = equipment.Icon;
     }

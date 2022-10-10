@@ -8,9 +8,7 @@ public abstract class EquipmentHolder : MonoBehaviour
     [SerializeField] private PhraseActivator _phraseActivator;
 
     public event UnityAction<Equipment> Changed;
-    public event UnityAction<Equipment> Equip;
 
-    protected Equipment Equipment;
     protected float PassedTime;
     protected Animator Animator;
     protected Fighter Fighter;
@@ -27,29 +25,18 @@ public abstract class EquipmentHolder : MonoBehaviour
     {
         if (_phraseActivator != null)
             _phraseActivator.Activated += OnActivated;
-
-        Changed += OnChanged;
     }
 
     protected virtual void OnDisable()
     {
         if (_phraseActivator != null)
             _phraseActivator.Activated -= OnActivated;
-
-        Changed -= OnChanged;
     }
 
-    protected virtual void OnChanged(Equipment equipment)
+    protected void Change(Equipment equipment)
     {
-        Equip?.Invoke(equipment);
+        Changed?.Invoke(equipment);
     }
 
-    protected void OnActivated(Phrase phrase)
-    {
-        if (phrase is Equipment equipment)
-        {
-            Equipment = equipment;
-            Changed?.Invoke(equipment);
-        }
-    }
+    protected abstract void OnActivated(Phrase phrase);
 }

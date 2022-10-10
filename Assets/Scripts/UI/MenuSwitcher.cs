@@ -4,13 +4,13 @@ using UnityEngine.UI;
 public class MenuSwitcher : CanvasGroupSwitcher
 {
     [SerializeField] private Button _closeButton;
+    [SerializeField] private WordPediaSwitcher _wordPediaSwitcher;
 
     private PlayerInput _playerInput;
 
-    protected override void Awake()
+    private void Awake()
     {
         _playerInput = new PlayerInput();
-        base.Awake();
     }
 
     private void OnEnable()
@@ -20,10 +20,27 @@ public class MenuSwitcher : CanvasGroupSwitcher
         _playerInput.Player.SwitchMenu.performed += ctx => OnButtonClick();
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         _closeButton.onClick.RemoveListener(OnButtonClick);
         _playerInput.Player.SwitchMenu.performed -= ctx => OnButtonClick();
         _playerInput.Disable();
+    }
+
+    protected override void Hide()
+    {
+        if (_wordPediaSwitcher != null)
+            _wordPediaSwitcher.enabled = true;
+
+        base.Hide();
+    }
+
+    protected override void Show()
+    {
+        if (_wordPediaSwitcher != null)
+            _wordPediaSwitcher.enabled = false;
+        
+        base.Show();
     }
 }

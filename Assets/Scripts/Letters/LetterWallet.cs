@@ -36,7 +36,8 @@ public class LetterWallet : MonoBehaviour
             letter.Clicked += OnClick;
 
         _wordsPhraseTranslator.Checked += OnWordApprove;
-        _wordsPhraseTranslator.WordCanceled += OnWordCanceled;
+        _wordsPhraseTranslator.Canceled += ClearLetters;
+        _wordsPhraseTranslator.Cleared += ClearLetters;
     }
 
     private void OnDisable()
@@ -48,7 +49,8 @@ public class LetterWallet : MonoBehaviour
             letter.Clicked -= OnClick;
 
         _wordsPhraseTranslator.Checked -= OnWordApprove;
-        _wordsPhraseTranslator.WordCanceled -= OnWordCanceled;
+        _wordsPhraseTranslator.Canceled -= ClearLetters;
+        _wordsPhraseTranslator.Cleared -= ClearLetters;
     }
 
     private void Start()
@@ -82,11 +84,11 @@ public class LetterWallet : MonoBehaviour
 
     private void OnClearButtonPress()
     {
-        OnWordCanceled();
+        ClearLetters();
         Changed?.Invoke(string.Empty);
     }
 
-    private void OnWordCanceled()
+    private void ClearLetters()
     {
         _selectedLetters.Clear();
 

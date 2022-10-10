@@ -18,4 +18,9 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _manaCost: 10
   _castDelay: 8
-  Value: 5
+  Value: 7
+  _soundSettings:
+    _sound: {fileID: 8300000, guid: 5cab96792ed76d340a74b0ec0b359bd7, type: 3}
+    _minPitch: 2
+    _maxPitch: 3
+  _particles: {fileID: 4773718030322521984, guid: 4c4b57afd8a5779439e333f72540805e, type: 3}

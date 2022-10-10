@@ -1,10 +1,16 @@
-using IJunior.TypedScenes;
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 public class GameLoser : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private Player _player;
+    [SerializeField] private LoseScreen _loseScreen;
+
+    private Player _player;
+
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
 
     private void OnEnable()
     {
@@ -18,11 +24,6 @@ public class GameLoser : MonoBehaviour
 
     private void OnDied()
     {
-        _animator.Play(EndGameAnimationController.States.Lose);
-    }
-
-    private void StartMainMenu()
-    {
-        MainMenu.Load();
+        Instantiate(_loseScreen);
     }
 }

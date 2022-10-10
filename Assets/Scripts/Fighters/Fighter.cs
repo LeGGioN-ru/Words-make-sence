@@ -64,17 +64,26 @@ public class Fighter : MonoBehaviour
         HealthChanged?.Invoke(_currentHealth, _maxHealth);
 
         if (_currentHealth <= 0)
+        {
             Died?.Invoke();
+            Destroy(gameObject);
+        }
     }
 
     public void Heal(int healPoints)
     {
+        if (healPoints < 0)
+            return;
+
         _currentHealth += healPoints;
         HealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
     public void RecoverMana(int mana)
     {
+        if (mana < 0)
+            return;
+
         _currentMana += mana;
         ManaChanged?.Invoke(_currentMana, _maxMana);
     }

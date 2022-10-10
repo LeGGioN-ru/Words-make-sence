@@ -9,12 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba5efb7aae36c643b019a260968d3d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 238344e12f85aca4e9efdbd3c048a769, type: 3}
   m_Name: BringOfDeathWeapon
   m_EditorClassIdentifier: 
   _firstOrderWord: {fileID: 0}
   _secondOrderWord: {fileID: 0}
   _apptembsToActivate: 0
   _icon: {fileID: 0}
-  _damage: 0
-  _attackDelay: 0
+  _damage: 20
+  _attackDelay: 2
+  _soundSettings:
+    _sound: {fileID: 8300000, guid: 0725e51138846af48b2d352faf5a8814, type: 3}
+    _minPitch: 0.8
+    _maxPitch: 1
+  _percentDamage: 5

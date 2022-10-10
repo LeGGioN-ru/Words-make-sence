@@ -1,12 +1,14 @@
+using UnityEngine;
+
 public class WordPediaSwitcher : CanvasGroupSwitcher
 {
+    [SerializeField] private MenuSwitcher _menuSwitcher;
+
     private PlayerInput _playerInput;
 
-    protected override void Awake()
+    private void Awake()
     {
-        PlayerInput playerInput = new PlayerInput();
-        _playerInput = playerInput;
-        base.Awake();
+        _playerInput = new PlayerInput();
     }
 
     private void OnEnable()
@@ -15,9 +17,26 @@ public class WordPediaSwitcher : CanvasGroupSwitcher
         _playerInput.Player.SwitchWordPedia.performed += ctx => OnButtonClick();
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         _playerInput.Player.SwitchWordPedia.performed -= ctx => OnButtonClick();
         _playerInput.Disable();
+    }
+
+    protected override void Hide()
+    {
+        if (_menuSwitcher != null)
+            _menuSwitcher.enabled = true;
+
+        base.Hide();
+    }
+
+    protected override void Show()
+    {
+        if (_menuSwitcher != null)
+            _menuSwitcher.enabled = false;
+
+        base.Show();
     }
 }

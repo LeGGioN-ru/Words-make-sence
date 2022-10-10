@@ -6,9 +6,14 @@ public abstract class CanvasGroupSwitcher : MonoBehaviour
     private CanvasGroup _canvasGroup;
     private bool _isVisible;
 
-    protected virtual void Awake()
+    private void Start()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    protected virtual void OnDisable()
+    {
+        Hide();
     }
 
     protected void OnButtonClick()
@@ -24,7 +29,7 @@ public abstract class CanvasGroupSwitcher : MonoBehaviour
         Hide();
     }
 
-    protected void Show()
+    protected virtual void Show()
     {
         _canvasGroup.alpha = 1;
         _canvasGroup.interactable = true;
@@ -32,7 +37,7 @@ public abstract class CanvasGroupSwitcher : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    protected void Hide()
+    protected virtual void Hide()
     {
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;

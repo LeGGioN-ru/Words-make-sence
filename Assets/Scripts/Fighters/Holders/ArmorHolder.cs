@@ -12,7 +12,7 @@ public class ArmorHolder : EquipmentHolder
 
     protected override void Start()
     {
-        OnChanged(_armor);
+        OnActivated(_armor);
     }
 
     private void Update()
@@ -24,16 +24,6 @@ public class ArmorHolder : EquipmentHolder
         }
 
         _passedTime += Time.deltaTime;
-    }
-
-    protected override void OnChanged(Equipment equipment)
-    {
-        if (equipment is Armor armor && Fighter is Player player)
-        {
-            _armor = armor;
-            player.SetStats(armor);
-            base.OnChanged(equipment);
-        }
     }
 
     public void CalculateDamage(int damage)
@@ -65,5 +55,15 @@ public class ArmorHolder : EquipmentHolder
 
         if (manaAfterRegeneration <= Fighter.MaxMana)
             Fighter.RecoverMana(_armor.ManaRegeneration);
+    }
+
+    protected override void OnActivated(Phrase phrase)
+    {
+        if (phrase is Armor armor && Fighter is Player player)
+        {
+            _armor = armor;
+            player.SetStats(armor);
+            Change(armor);
+        }
     }
 }

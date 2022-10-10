@@ -16,5 +16,9 @@ MonoBehaviour:
   _secondOrderWord: {fileID: 11400000, guid: 7cdee2406cee28b49a8f9f9b48dca549, type: 2}
   _apptembsToActivate: 3
   _icon: {fileID: 21300000, guid: ff3f1629bbacd6a45ae5a18575f35821, type: 3}
-  _damage: 40
+  _damage: 60
   _attackDelay: 2.5
+  _soundSettings:
+    _sound: {fileID: 8300000, guid: 49df38e7d0f9f7e4e8821d52a4c54bdb, type: 3}
+    _minPitch: 1
+    _maxPitch: 2

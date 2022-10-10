@@ -12,8 +12,9 @@ public class GuideSwitcher : CanvasGroupSwitcher
         _closeButton.onClick.AddListener(Hide);
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         _openButton.onClick.RemoveListener(Show);
         _closeButton.onClick.RemoveListener(Hide);
     }

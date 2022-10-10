@@ -11,7 +11,7 @@ public class AttackState : State
         Animator.SetBool(FighterAnimationController.Params.IsRun, false);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         AttackStarted?.Invoke();
     }

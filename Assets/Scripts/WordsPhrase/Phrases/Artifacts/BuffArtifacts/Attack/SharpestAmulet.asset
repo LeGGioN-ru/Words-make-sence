@@ -16,4 +16,4 @@ MonoBehaviour:
   _secondOrderWord: {fileID: 11400000, guid: 342212d06c312694a8c11dafbb335270, type: 2}
   _apptembsToActivate: 4
   _icon: {fileID: -6258528355877985032, guid: 6549b0afeb0e6d84d8c4f70c48b74d2c, type: 3}
-  Value: 3
+  Value: 1

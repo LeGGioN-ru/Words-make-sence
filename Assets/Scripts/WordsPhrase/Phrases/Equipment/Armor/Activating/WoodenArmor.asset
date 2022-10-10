@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstOrderWord: {fileID: 11400000, guid: 2a6aaa42a9e98a246a7985c22d64c69d, type: 2}
   _secondOrderWord: {fileID: 11400000, guid: c4e06030678e6724794dadf26a00c31e, type: 2}
-  _apptembsToActivate: 2
+  _apptembsToActivate: 1
   _icon: {fileID: 21300000, guid: 541ae020fad5efc48a89a38c6218a601, type: 3}
   _defendPercent: 5
   _healthRegeneration: 2

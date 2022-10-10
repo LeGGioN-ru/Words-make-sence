@@ -16,5 +16,9 @@ MonoBehaviour:
   _secondOrderWord: {fileID: 0}
   _apptembsToActivate: 0
   _icon: {fileID: 0}
-  _damage: 0
-  _attackDelay: 0
+  _damage: 40
+  _attackDelay: 3
+  _soundSettings:
+    _sound: {fileID: 8300000, guid: 84a3be8547a26ed48875b90de32e2bd6, type: 3}
+    _minPitch: 0.5
+    _maxPitch: 1

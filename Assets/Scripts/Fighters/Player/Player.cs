@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.Events;
 
 public class Player : Fighter
@@ -33,5 +34,7 @@ public class Player : Fighter
     {
         MaxHealth = armor.Health + _additionalHealth;
         MaxMana = armor.Mana + _additionalMana;
+        Heal(MaxHealth - CurrentHealth);
+        RecoverMana(MaxMana - CurrentMana);
     }
 }

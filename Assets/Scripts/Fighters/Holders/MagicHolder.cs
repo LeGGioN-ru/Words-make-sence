@@ -4,10 +4,11 @@ public class MagicHolder : EquipmentHolder
 {
     [SerializeField] private Magic _magic;
     [SerializeField] private AttackState _attackState;
+    [SerializeField] private AudioSource _castSound;
 
     protected override void Start()
     {
-        OnChanged(_magic);
+        OnActivated(_magic);
     }
 
     protected override void OnEnable()
@@ -22,26 +23,33 @@ public class MagicHolder : EquipmentHolder
         base.OnDisable();
     }
 
-    protected override void OnChanged(Equipment equipment)
-    {
-        if (equipment is Magic magic)
-        {
-            _magic = magic;
-            base.OnChanged(equipment);
-        }
-    }
-
     protected void OnAttackStarted()
     {
         if (_magic == null)
             return;
 
-        if (PassedTime >= _magic.CastDelay && _magic.ManaCost <= Fighter.CurrentMana)
+        if (_magic.CheckAvalible(PassedTime, Fighter))
         {
-            _magic.TryCast(Fighter, Animator);
+            Cast();
             PassedTime = 0;
         }
 
         PassedTime += Time.deltaTime;
+    }
+
+    protected override void OnActivated(Phrase phrase)
+    {
+        if (phrase is Magic magic)
+        {
+            _magic = magic;
+            _castSound.clip = _magic.SoundSettings.Sound;
+            Change(magic);
+        }
+    }
+
+    private void Cast()
+    {
+        _magic.Cast(Fighter, Animator);
+        _magic.SoundSettings.TryPlaySound(_castSound);
     }
 }

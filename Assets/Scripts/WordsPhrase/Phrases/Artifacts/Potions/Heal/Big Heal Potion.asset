@@ -16,6 +16,5 @@ MonoBehaviour:
   _secondOrderWord: {fileID: 11400000, guid: 60ba02f3e58b11742b4aa96a072cfb8b, type: 2}
   _apptembsToActivate: 3
   _icon: {fileID: 21300000, guid: 7b3876a2b72c44540a4bbd5aaba9e506, type: 3}
-  _description: 
-  Value: 500
+  Value: 700
   Threshold: 80

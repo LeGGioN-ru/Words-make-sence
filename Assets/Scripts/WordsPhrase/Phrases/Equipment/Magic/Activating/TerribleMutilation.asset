@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e231adc1289831740b0e91f07992c268, type: 3}
+  m_Name: TerribleMutilation
+  m_EditorClassIdentifier: 
+  _firstOrderWord: {fileID: 11400000, guid: db22accd884be1e458fb8ae98e1f6ba1, type: 2}
+  _secondOrderWord: {fileID: 11400000, guid: 685c18e145671c2429f3111fa76944cf, type: 2}
+  _apptembsToActivate: 4
+  _icon: {fileID: 21300000, guid: ecd405cee8c8a174f99f9e31b6393b07, type: 3}
+  _manaCost: 40
+  _castDelay: 6
+  Value: 500
+  _soundSettings:
+    _sound: {fileID: 8300000, guid: c51836d8f72d3ca458bedcbed7e6da57, type: 3}
+    _minPitch: 1
+    _maxPitch: 2

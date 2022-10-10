@@ -17,4 +17,8 @@ MonoBehaviour:
   _apptembsToActivate: 0
   _icon: {fileID: 0}
   _damage: 1
-  _attackDelay: 0.5
+  _attackDelay: 0.2
+  _soundSettings:
+    _sound: {fileID: 8300000, guid: 084ae6898d1e62447a42a3d9f80fd69b, type: 3}
+    _minPitch: 1
+    _maxPitch: 2

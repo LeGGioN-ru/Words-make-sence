@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +9,8 @@ public class WordsPhraseTranslator : MonoBehaviour
 
     public event UnityAction<Phrase> Translated;
     public event UnityAction Checked;
-    public event UnityAction WordCanceled;
+    public event UnityAction Canceled;
+    public event UnityAction Cleared;
 
     private FirstOrderWord _firstOrderWord;
 
@@ -49,26 +49,34 @@ public class WordsPhraseTranslator : MonoBehaviour
             return;
         }
 
-        CleanWords();
+        CancelWords();
     }
 
     private void TryActivateWord(SecondOrderWord secondOrderWord)
     {
-        foreach (var endWord in _phrases)
+        foreach (var phrase in _phrases)
         {
-            if (endWord.Compare(_firstOrderWord, secondOrderWord))
+            if (phrase.Compare(_firstOrderWord, secondOrderWord))
             {
                 Checked?.Invoke();
-                Translated?.Invoke(endWord);
+                Translated?.Invoke(phrase);
+                ClearWords();
+                return;
             }
         }
 
-        CleanWords();
+        CancelWords();
     }
 
-    private void CleanWords()
+    private void ClearWords()
     {
-        WordCanceled?.Invoke();
+        Cleared?.Invoke();
+        _firstOrderWord = null;
+    }
+
+    private void CancelWords()
+    {
+        Canceled?.Invoke();
         _firstOrderWord = null;
     }
 }

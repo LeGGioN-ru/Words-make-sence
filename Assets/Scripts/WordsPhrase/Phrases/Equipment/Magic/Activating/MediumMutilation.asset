@@ -16,6 +16,10 @@ MonoBehaviour:
   _secondOrderWord: {fileID: 11400000, guid: 685c18e145671c2429f3111fa76944cf, type: 2}
   _apptembsToActivate: 2
   _icon: {fileID: 21300000, guid: 323f6420ae38257499ba31722e263b12, type: 3}
-  _manaCost: 5
+  _manaCost: 10
   _castDelay: 3
   Value: 100
+  _soundSettings:
+    _sound: {fileID: 8300000, guid: 84a3be8547a26ed48875b90de32e2bd6, type: 3}
+    _minPitch: 1
+    _maxPitch: 2

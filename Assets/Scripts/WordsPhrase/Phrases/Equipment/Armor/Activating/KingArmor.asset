@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2eb15fcfdaea4c41b813d525a661f18, type: 3}
   m_Name: KingArmor
   m_EditorClassIdentifier: 
-  _firstOrderWord: {fileID: 0}
-  _secondOrderWord: {fileID: 0}
-  _apptembsToActivate: 0
-  _icon: {fileID: 21300000, guid: 4b489113d7d95ed4c98a7e0bb2b76ae0, type: 3}
-  _description: 
-  _defendPercent: 0
-  _healthRegeneration: 0
-  _manaRegeneration: 0
-  _health: 0
-  _mana: 0
+  _firstOrderWord: {fileID: 11400000, guid: 8374c700ab0034a4392a8787e90ab460, type: 2}
+  _secondOrderWord: {fileID: 11400000, guid: c4e06030678e6724794dadf26a00c31e, type: 2}
+  _apptembsToActivate: 6
+  _icon: {fileID: 21300000, guid: 834fca0792e0e7e479ded11b4d06d406, type: 3}
+  _defendPercent: 50
+  _healthRegeneration: 10
+  _manaRegeneration: 10
+  _health: 700
+  _mana: 700

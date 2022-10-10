@@ -8,6 +8,7 @@ public class LetterPanelCleaner : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private float _cooldown;
     [SerializeField] private float _cooldownIncrease;
+    [SerializeField] private float _roundValue;
 
     public event UnityAction<float, float> TimePassed;
 
@@ -34,8 +35,10 @@ public class LetterPanelCleaner : MonoBehaviour
     {
         _passedTime += Time.deltaTime;
 
-        if (_passedTime <= _cooldown)
-            TimePassed?.Invoke(_passedTime, _cooldown);
+        if (_passedTime > _cooldown + _roundValue)
+            return;
+
+        TimePassed?.Invoke(_passedTime, _cooldown);
     }
 
     private void OnLetterPanelClear()

@@ -53,15 +53,15 @@ public class Spawner : MonoBehaviour
 
     private void Execute()
     {
-        _currentEnemy = Instantiate(_enemyPacks[_evilLevel].GetRandomEnemy(), _spawnPoint);
+        if (_enemyPacks[_evilLevel].TryGetRandomEnemy(out Enemy enemy))
+        {
+            _currentEnemy = Instantiate(enemy, _spawnPoint);
 
-        if (_currentEnemy == null)
-            return;
+            if (_currentEnemy is Boss)
+                IncreaseEvil();
 
-        if (_currentEnemy is Boss)
-            IncreaseEvil();
-
-        EnemySpawned?.Invoke(_currentEnemy);
+            EnemySpawned?.Invoke(_currentEnemy);
+        }
     }
 }
 
@@ -70,8 +70,16 @@ public class EnemyPack
 {
     [SerializeField] private List<Enemy> _enemies;
 
-    public Enemy GetRandomEnemy()
+    public bool TryGetRandomEnemy(out Enemy enemy)
     {
-        return _enemies[UnityEngine.Random.Range(0, _enemies.Count)];
+        enemy = null;
+
+        if (_enemies.Count > 0)
+            enemy = _enemies[UnityEngine.Random.Range(0, _enemies.Count)];
+
+        if (enemy == null)
+            return false;
+
+        return true;
     }
 }

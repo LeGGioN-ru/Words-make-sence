@@ -13,19 +13,21 @@ public class WordTyper : MonoBehaviour
 
     private void OnEnable()
     {
-        _wordsPhraseTranslator.WordCanceled += OnWordCanceled;
+        _wordsPhraseTranslator.Canceled += ClearWords;
+        _wordsPhraseTranslator.Cleared += ClearWords;
         _typedWordChecker.WordApproved += OnWordApproved;
         _letterWallet.Changed += OnChanged;
     }
 
     private void OnDisable()
     {
-        _wordsPhraseTranslator.WordCanceled -= OnWordCanceled;
+        _wordsPhraseTranslator.Canceled -= ClearWords;
+        _wordsPhraseTranslator.Cleared -= ClearWords;
         _typedWordChecker.WordApproved -= OnWordApproved;
         _letterWallet.Changed -= OnChanged;
     }
 
-    private void OnWordCanceled()
+    private void ClearWords()
     {
         _isNewTypeField = true;
         _currentTypeFieldIndex = 0;

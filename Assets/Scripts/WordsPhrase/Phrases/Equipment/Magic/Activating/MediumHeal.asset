@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: MediumHeal
   m_EditorClassIdentifier: 
   _firstOrderWord: {fileID: 11400000, guid: 61f2c3d5e95048d4d9413deba290d9ea, type: 2}
-  _secondOrderWord: {fileID: 11400000, guid: 60ba02f3e58b11742b4aa96a072cfb8b, type: 2}
+  _secondOrderWord: {fileID: 11400000, guid: e60cacc53276d26428b5959fc0f6dde2, type: 2}
   _apptembsToActivate: 3
   _icon: {fileID: 21300000, guid: e1996ed02122cb742ac29367959ca903, type: 3}
-  _manaCost: 30
-  _castDelay: 7
+  _manaCost: 60
+  _castDelay: 15
   Value: 30
+  _particles: {fileID: 4773718030322521984, guid: 4c4b57afd8a5779439e333f72540805e, type: 3}

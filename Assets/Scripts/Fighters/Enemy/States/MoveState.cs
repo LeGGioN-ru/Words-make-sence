@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 public class MoveState : State
 {
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private Vector2 _direction;
+    [SerializeField] private int _direction;
 
     private void OnEnable()
     {
@@ -12,6 +13,6 @@ public class MoveState : State
 
     private void Update()
     {
-        transform.Translate(_moveSpeed * Time.deltaTime * _direction);
+        transform.Translate(new Vector2(_moveSpeed * Time.deltaTime * _direction, 0));
     }
 }
