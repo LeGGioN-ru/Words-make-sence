@@ -19,3 +19,7 @@ MonoBehaviour:
   _manaCost: 700
   _castDelay: 10
   Value: 300
+  _soundSettings:
+    _sound: {fileID: 8300000, guid: 5df714b4c36b74e4ea0141f5f0e41b96, type: 3}
+    _minPitch: 0.75
+    _maxPitch: 1

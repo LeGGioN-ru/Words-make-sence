@@ -12,7 +12,7 @@ public class SoundSettings
     public float MinPitch => _minPitch;
     public float MaxPitch => _maxPitch;
 
-    public void TryPlaySound(AudioSource audioSource)
+    public void Play(AudioSource audioSource)
     {
         audioSource.pitch = UnityEngine.Random.Range(MinPitch, MaxPitch);
         audioSource.Play();

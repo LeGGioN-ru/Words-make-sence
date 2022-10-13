@@ -14,7 +14,7 @@ public class ManaPotion : Potion
     {
         MissingValue = maxMana - currentMana;
 
-        if (MissingValue >= Value || currentMana <= Threshold)
+        if (MissingValue >= Value)
         {
             Use();
         }

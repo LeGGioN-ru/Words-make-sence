@@ -1,6 +1,3 @@
-using System;
-using UnityEngine.Events;
-
 public class Player : Fighter
 {
     private int _additionalHealth;

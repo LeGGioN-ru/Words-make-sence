@@ -68,7 +68,7 @@ public class WeaponHolder : EquipmentHolder
     private void Attack()
     {
         Animator.Play(FighterAnimationController.States.Attack);
-        _weapon.SoundSettings.TryPlaySound(_attackSound);
+        _weapon.SoundSettings.Play(_attackSound);
         _weapon.Attack(Fighter, CalculateFinalDamage());
     }
 }

@@ -42,7 +42,7 @@ public class WordTyper : MonoBehaviour
     {
         _typeFields[_currentTypeFieldIndex].text = word.Label;
 
-        if (_currentTypeFieldIndex + 1 < _typeFields.Length)
+        if (_currentTypeFieldIndex < _typeFields.Length - 1)
             _currentTypeFieldIndex++;
 
         _typeFields[_currentTypeFieldIndex].text = string.Empty;

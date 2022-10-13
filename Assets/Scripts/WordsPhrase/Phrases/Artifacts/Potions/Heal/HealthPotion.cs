@@ -14,7 +14,7 @@ public class HealthPotion : Potion
     {
         MissingValue = maxHealth - currentHealth;
 
-        if (MissingValue >= Value || currentHealth <= Threshold)
+        if (MissingValue >= Value)
         {
             Use();
         }

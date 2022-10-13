@@ -6,6 +6,8 @@ public class WordsPhraseTranslator : MonoBehaviour
     [SerializeField] private WordChecker _wordChecker;
     [SerializeField] private Phrase[] _phrases;
     [SerializeField] private ItemViewsGenerator _itemViewsGenerator;
+    [SerializeField] private AudioSource _cancelSound;
+    [SerializeField] private AudioSource _translateSound;
 
     public event UnityAction<Phrase> Translated;
     public event UnityAction Checked;
@@ -35,7 +37,7 @@ public class WordsPhraseTranslator : MonoBehaviour
                 break;
 
             case SecondOrderWord secondOrderWord:
-                TryActivateWord(secondOrderWord);
+                TryExecute(secondOrderWord);
                 break;
         }
     }
@@ -52,20 +54,26 @@ public class WordsPhraseTranslator : MonoBehaviour
         CancelWords();
     }
 
-    private void TryActivateWord(SecondOrderWord secondOrderWord)
+    private void TryExecute(SecondOrderWord secondOrderWord)
     {
         foreach (var phrase in _phrases)
         {
             if (phrase.Compare(_firstOrderWord, secondOrderWord))
             {
-                Checked?.Invoke();
-                Translated?.Invoke(phrase);
-                ClearWords();
+                Execute(phrase);
                 return;
             }
         }
 
         CancelWords();
+    }
+
+    private void Execute(Phrase phrase)
+    {
+        Checked?.Invoke();
+        Translated?.Invoke(phrase);
+        _translateSound.Play();
+        ClearWords();
     }
 
     private void ClearWords()
@@ -76,6 +84,7 @@ public class WordsPhraseTranslator : MonoBehaviour
 
     private void CancelWords()
     {
+        _cancelSound.Play();
         Canceled?.Invoke();
         _firstOrderWord = null;
     }

@@ -10,7 +10,7 @@ public static class FighterAnimationController
         public static readonly int Idle = Animator.StringToHash(nameof(Idle));
         public static readonly int Run = Animator.StringToHash(nameof(Run));
         public static readonly int Attack = Animator.StringToHash(nameof(Attack));
-        public static readonly int Die = Animator.StringToHash(nameof(Die));
+        public static readonly int Death = Animator.StringToHash(nameof(Death));
         public static readonly int Magic = Animator.StringToHash(nameof(Magic));
         public static readonly int TakeDamage = Animator.StringToHash(nameof(TakeDamage));
     }

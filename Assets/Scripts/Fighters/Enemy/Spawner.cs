@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour
 
     public event UnityAction<int> EvilIncreased;
     public event UnityAction<Enemy> EnemySpawned;
+    public event UnityAction EnemiesEnded;
 
     private int _evilLevel;
     private float _passedTime;
@@ -31,14 +32,20 @@ public class Spawner : MonoBehaviour
 
         if (_passedTime >= _spawnDelay)
         {
-            Execute();
-            _passedTime = 0;
+            if (_enemyPacks.Count > _evilLevel)
+            {
+                Execute();
+                _passedTime = 0;
+                return;
+            }
+
+            EndGame();
         }
     }
 
     private IEnumerator EvilIncreasing()
     {
-        while (_evilLevel < _enemyPacks.Count - 1)
+        while (true)
         {
             yield return new WaitForSeconds(_evilIncreaseDelay);
             IncreaseEvil();
@@ -62,6 +69,16 @@ public class Spawner : MonoBehaviour
 
             EnemySpawned?.Invoke(_currentEnemy);
         }
+    }
+
+    private void EndGame()
+    {
+        if (_currentEnemy != null)
+            return;
+
+        StopCoroutine(EvilIncreasing());
+        EnemiesEnded?.Invoke();
+        enabled = false;
     }
 }
 

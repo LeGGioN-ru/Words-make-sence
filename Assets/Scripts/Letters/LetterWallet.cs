@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class LetterWallet : MonoBehaviour
 {
     [SerializeField] private WordsPhraseTranslator _wordsPhraseTranslator;
+    [SerializeField] private AudioSource _clearSelectedSound;
 
     public event UnityAction<string> Changed;
 
@@ -20,9 +21,7 @@ public class LetterWallet : MonoBehaviour
             string word = string.Empty;
 
             foreach (var letter in _selectedLetters)
-            {
                 word += letter.Label;
-            }
 
             return word;
         }
@@ -90,11 +89,13 @@ public class LetterWallet : MonoBehaviour
 
     private void ClearLetters()
     {
+        if (_selectedLetters.Count == 0)
+            return;
+
         _selectedLetters.Clear();
+        _clearSelectedSound.Play();
 
         foreach (var letter in _letterViews)
-        {
             letter.DeSelect();
-        }
     }
 }

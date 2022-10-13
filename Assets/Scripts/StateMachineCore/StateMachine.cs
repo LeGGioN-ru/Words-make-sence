@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Fighter))]
 public class StateMachine : MonoBehaviour
 {
     [SerializeField] private State _startState;

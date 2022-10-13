@@ -7,6 +7,7 @@ public class HealthArtifact : Artifact
     public override void Init(Player player)
     {
         player.IncreaseHealth(Convert.ToInt32(Value));
+        player.Heal(Convert.ToInt32(Value));
         base.Init(player);
     }
 

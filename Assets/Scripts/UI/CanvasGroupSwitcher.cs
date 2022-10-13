@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CanvasGroup))]
 public abstract class CanvasGroupSwitcher : MonoBehaviour
 {
+    public event UnityAction Showed;
+    public event UnityAction Hided;
+
     private CanvasGroup _canvasGroup;
     private bool _isVisible;
 
@@ -35,6 +39,7 @@ public abstract class CanvasGroupSwitcher : MonoBehaviour
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;
         Time.timeScale = 0;
+        Showed?.Invoke();
     }
 
     protected virtual void Hide()
@@ -43,5 +48,6 @@ public abstract class CanvasGroupSwitcher : MonoBehaviour
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
         Time.timeScale = 1;
+        Hided?.Invoke();
     }
 }

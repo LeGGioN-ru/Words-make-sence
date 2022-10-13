@@ -6,6 +6,11 @@ public class DieState : State
     private void Start()
     {
         var animator = GetComponent<Animator>();
-        animator.Play(FighterAnimationController.States.Die);
+        animator.Play(FighterAnimationController.States.Death);
+    }
+
+    private void Execute()
+    {
+        Destroy(gameObject);
     }
 }

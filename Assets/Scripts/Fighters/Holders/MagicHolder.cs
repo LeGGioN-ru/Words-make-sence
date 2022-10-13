@@ -50,6 +50,6 @@ public class MagicHolder : EquipmentHolder
     private void Cast()
     {
         _magic.Cast(Fighter, Animator);
-        _magic.SoundSettings.TryPlaySound(_castSound);
+        _magic.SoundSettings.Play(_castSound);
     }
 }

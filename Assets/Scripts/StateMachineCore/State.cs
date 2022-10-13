@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Fighter))]
 [RequireComponent(typeof(Animator))]
 public abstract class State : MonoBehaviour
 {
@@ -21,9 +20,7 @@ public abstract class State : MonoBehaviour
             enabled = true;
 
             foreach (var transition in _transitions)
-            {
                 transition.enabled = true;
-            }
         }
     }
 

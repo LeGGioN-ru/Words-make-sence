@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class LettersGenerator : MonoBehaviour
@@ -21,12 +20,10 @@ public class LettersGenerator : MonoBehaviour
             var row = Instantiate(_letterRowTemplate, _panel.transform);
 
             for (int j = 0; j < _amountLetters; j++)
-            {
                 _letterViews.Add(Instantiate(_letterViewTemplate, row.transform));
-            }
         }
 
-        _panelCleaner.Init(_letterViews);
+        _panelCleaner.Init(_letterViews.ToArray());
         _letterWallet.Init(_letterViews.ToArray());
     }
 

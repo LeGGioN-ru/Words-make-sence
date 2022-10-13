@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstOrderWord: {fileID: 11400000, guid: 9c6cd1d8236ad8748a03f1d251e0bc4b, type: 2}
   _secondOrderWord: {fileID: 11400000, guid: 7887523a7168b544d84898de9f119e2a, type: 2}
-  _apptembsToActivate: 5
+  _apptembsToActivate: 3
   _icon: {fileID: 21300000, guid: 533cf75830b859547a8e36babd6dd78d, type: 3}
   Value: 1000

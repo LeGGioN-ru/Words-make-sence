@@ -7,6 +7,7 @@ public class ManaArtifact : Artifact
     public override void Init(Player player)
     {
         player.IncreaseMana(Convert.ToInt32(Value));
+        player.RecoverMana(Convert.ToInt32(Value));
         base.Init(player);
     }
 

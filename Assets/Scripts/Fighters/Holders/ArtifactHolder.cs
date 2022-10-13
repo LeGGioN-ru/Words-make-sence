@@ -13,7 +13,7 @@ public class ArtifactHolder : MonoBehaviour
 
     private List<ArtifactView> _views = new List<ArtifactView>();
 
-    private void Awake()
+    private void Start()
     {
         _player = GetComponent<Player>();
     }
@@ -32,10 +32,10 @@ public class ArtifactHolder : MonoBehaviour
     {
         if (phrase is Artifact artifact)
         {
-            AddArtifact(artifact);
-
             if (_views.Count > _maxCount)
                 RemoveArtifact();
+
+            AddArtifact(artifact);
         }
     }
 
@@ -43,7 +43,6 @@ public class ArtifactHolder : MonoBehaviour
     {
         int firstArtifactIndex = 0;
         _views[firstArtifactIndex].Artifact.Use();
-        Destroy(_views[firstArtifactIndex].gameObject);
     }
 
     private void AddArtifact(Artifact artifact)
