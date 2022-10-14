@@ -16,40 +16,36 @@ public class Spawner : MonoBehaviour
     public event UnityAction EnemiesEnded;
 
     private int _evilLevel;
-    private float _passedTime;
     private Enemy _currentEnemy;
 
     private void Start()
     {
         EvilIncreased?.Invoke(_evilLevel);
         StartCoroutine(EvilIncreasing());
-    }
-
-    private void Update()
-    {
-        if (_currentEnemy == null)
-            _passedTime += Time.deltaTime;
-
-        if (_passedTime >= _spawnDelay)
-        {
-            if (_enemyPacks.Count > _evilLevel)
-            {
-                Execute();
-                _passedTime = 0;
-                return;
-            }
-
-            EndGame();
-        }
+        StartCoroutine(Spawning());
     }
 
     private IEnumerator EvilIncreasing()
     {
+        WaitForSeconds delay = new WaitForSeconds(_evilIncreaseDelay);
+
         while (true)
         {
-            yield return new WaitForSeconds(_evilIncreaseDelay);
+            yield return delay;
             IncreaseEvil();
         }
+    }
+
+    private IEnumerator Spawning()
+    {
+        WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
+
+        do
+        {
+            Execute();
+            yield return delay;
+        } 
+        while (TryEndGame() == false);
     }
 
     private void IncreaseEvil()
@@ -60,6 +56,9 @@ public class Spawner : MonoBehaviour
 
     private void Execute()
     {
+        if (_currentEnemy != null)
+            return;
+
         if (_enemyPacks[_evilLevel].TryGetRandomEnemy(out Enemy enemy))
         {
             _currentEnemy = Instantiate(enemy, _spawnPoint);
@@ -71,14 +70,17 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void EndGame()
+    private bool TryEndGame()
     {
-        if (_currentEnemy != null)
-            return;
+        if (_currentEnemy != null || _enemyPacks.Count > _evilLevel)
+            return false;
 
         StopCoroutine(EvilIncreasing());
+        StopCoroutine(Spawning());
         EnemiesEnded?.Invoke();
         enabled = false;
+
+        return true;
     }
 }
 
