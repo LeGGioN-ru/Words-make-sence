@@ -32,7 +32,7 @@ public class ArtifactHolder : MonoBehaviour
     {
         if (phrase is Artifact artifact)
         {
-            if (_views.Count > _maxCount)
+            if (_views.Count >= _maxCount)
                 RemoveArtifact();
 
             AddArtifact(artifact);
