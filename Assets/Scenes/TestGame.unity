@@ -12266,7 +12266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3182074, y: 0.033369537}
   m_AnchorMax: {x: 0.892581, y: 0.6597029}
-  m_AnchoredPosition: {x: 73, y: -34.793076}
+  m_AnchoredPosition: {x: 73, y: -34.79306}
   m_SizeDelta: {x: 0, y: -69.586}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1572916644
@@ -14521,6 +14521,10 @@ PrefabInstance:
     - target: {fileID: 7328674906657270713, guid: fa3583ab35447e64b9d3b3e8b504c322, type: 3}
       propertyPath: m_Name
       value: EnemyBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328674906657270715, guid: fa3583ab35447e64b9d3b3e8b504c322, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7328674906657541747, guid: fa3583ab35447e64b9d3b3e8b504c322, type: 3}
       propertyPath: m_AnchoredPosition.x
