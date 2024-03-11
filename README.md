@@ -11,7 +11,7 @@ Sep 14, 2022 - Oct 14, 2022.
 - Сбор слов;
 - Боссы;
 - Различные предметы;
-- Idle сражения;
+- Idle сражения.
 
 #### Скриншоты
 ![image](https://github.com/LeGGioN-ru/Words-make-sence/assets/78662261/6b620d9e-b27f-46b4-889a-84bda5c4285c)
