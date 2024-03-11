@@ -16,5 +16,4 @@ Sep 14, 2022 - Oct 14, 2022.
 #### Скриншоты
 ![image](https://github.com/LeGGioN-ru/Words-make-sence/assets/78662261/6b620d9e-b27f-46b4-889a-84bda5c4285c)
 ![image](https://github.com/LeGGioN-ru/Words-make-sence/assets/78662261/257be369-64a4-4618-b48a-45e98258e129)
-![image](https://github.com/LeGGioN-ru/Words-make-sence/assets/78662261/b38866ab-23d9-4da9-95bc-fcc3fe82145d)
-
+![unnamed (3)](https://github.com/LeGGioN-ru/Words-make-sence/assets/78662261/12565905-32b8-42c3-a48f-db173e7706b5)
